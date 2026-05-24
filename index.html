@@ -30,6 +30,11 @@
             0%, 100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); filter: brightness(1); }
             50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.9); filter: brightness(1.3); }
         }
+        @keyframes laser-sweep {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
         .glow-active-green {
             animation: pulse-glow-green 1.5s infinite;
         }
@@ -42,9 +47,93 @@
         .fan-spin {
             animation: spin 1s linear infinite;
         }
+        .laser-anim {
+            animation: laser-sweep 2s infinite linear;
+        }
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        /* 3-Phase Panel Style Adaptations */
+        .panel-body { background: #1e293b; border: 3px solid #475569; border-radius: 18px; padding: 18px; position: relative; }
+        .section-box { background: #0f172a; border: 1.5px solid #334155; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+        .bus-bar { display: flex; gap: 6px; margin-bottom: 8px; align-items: center; }
+        .bus-strip { height: 8px; flex: 1; border-radius: 3px; border: 1px solid rgba(0,0,0,.4); }
+        .bus-r { background: #ef4444; }
+        .bus-s { background: #f59e0b; }
+        .bus-t { background: #10b981; }
+        .bus-n { background: #cbd5e1; }
+        .bus-gnd { background: #22c55e; }
+        .bus-label { font-size: 9px; font-family: 'Share Tech Mono', monospace; color: #94a3b8; min-width: 10px; text-align: center; }
+        .mcb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+        @media (max-width: 640px) {
+            .mcb-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .mcb-main-row { display: flex; gap: 8px; margin-bottom: 6px; }
+        .mcb { background: #0f172a; border: 1.5px solid #334155; border-radius: 5px; padding: 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; transition: all .15s; position: relative; min-height: 72px; }
+        .mcb:hover { border-color: #10b981; }
+        .mcb-label { font-size: 8px; font-family: 'Share Tech Mono', monospace; color: #94a3b8; text-align: center; line-height: 1.2; }
+        .mcb-num { font-size: 9px; font-family: 'Share Tech Mono', monospace; color: #f8fafc; font-weight: 600; }
+        .mcb-handle { width: 16px; height: 22px; border-radius: 3px; background: #10b981; border: 1px solid #047857; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+        .mcb-handle.off { background: #ef4444; border-color: #b91c1c; }
+        .mcb-handle-dot { width: 5px; height: 5px; border-radius: 50%; background: #fff; opacity: .7; }
+        .mcb-handle.off .mcb-handle-dot { background: #fef08a; }
+        .mcb-amp { font-size: 7px; color: #38bdf8; font-family: 'Share Tech Mono', monospace; }
+        .phase-dot { width: 5px; height: 5px; border-radius: 50%; }
+        .ph-r { background: #ef4444; }
+        .ph-s { background: #f59e0b; }
+        .ph-t { background: #10b981; }
+        .status-badge { font-size: 7px; padding: 1px 4px; border-radius: 3px; font-family: 'Share Tech Mono', monospace; margin-top: 1px; }
+        .badge-on { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 0.5px solid rgba(16,185,129,0.4); }
+        .badge-off { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 0.5px solid rgba(239,68,68,0.4); }
+        .badge-trip { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 0.5px solid rgba(245,158,11,0.4); animation: blink .6s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+        .info-row { display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-family: 'Share Tech Mono', monospace; color: #94a3b8; padding: 2px 0; }
+        .load-bar-wrap { background: #020617; border-radius: 3px; height: 5px; flex: 1; margin: 0 6px; overflow: hidden; }
+        .load-bar { height: 100%; border-radius: 3px; transition: width .5s ease; }
+        .load-bar.safe { background: #10b981; }
+        .load-bar.warn { background: #f59e0b; }
+        .load-bar.danger { background: #ef4444; animation: blink .4s infinite; }
+        .main-mcb { flex: 1; min-width: 60px; min-height: 80px; }
+        .main-handle { width: 20px; height: 28px; border-radius: 4px; background: #10b981; border: 1.5px solid #047857; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+        .main-handle.off { background: #ef4444; border-color: #b91c1c; }
+        .emergency-btn { background: #991b1b; border: 1px solid #ef4444; color: #fff; font-family: 'Share Tech Mono', monospace; font-size: 9px; border-radius: 5px; padding: 5px 8px; cursor: pointer; transition: all .15s; font-weight: 500; }
+        .emergency-btn:active { transform: scale(.95); background: #ef4444; }
+        .reset-btn { background: #1e3a8a; border: 1px solid #3b82f6; color: #93c5fd; font-family: 'Share Tech Mono', monospace; font-size: 9px; border-radius: 5px; padding: 5px 8px; cursor: pointer; }
+        .kv-display { background: #020617; border: 1.5px solid #334155; border-radius: 8px; padding: 6px 10px; }
+        .kv-row { display: flex; gap: 8px; }
+        .kv-cell { flex: 1; text-align: center; }
+        .kv-val { font-family: 'Share Tech Mono', monospace; font-size: 14px; font-weight: 600; }
+        .kv-lbl { font-size: 8px; font-family: 'Share Tech Mono', monospace; color: #64748b; }
+        .kv-r { color: #f87171; }
+        .kv-s { color: #fbbf24; }
+        .kv-t { color: #34d399; }
+        .kv-w { color: #818cf8; }
+        .tenants-log { margin-top: 6px; max-height: 90px; overflow-y: auto; }
+        .log-item { font-size: 9px; font-family: 'Share Tech Mono', monospace; color: #94a3b8; padding: 2px 0; border-bottom: 0.5px solid #334155; }
+        .ctrl-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+
+        /* Smartphone AppSheet Frame */
+        .phone-frame {
+            background: #020617;
+            border: 10px solid #1e293b;
+            border-radius: 36px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+        }
+        .phone-notch {
+            width: 110px;
+            height: 18px;
+            background: #1e293b;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 50;
         }
     </style>
 </head>
@@ -60,13 +149,13 @@
                     </div>
                     <div>
                         <span class="font-bold text-lg tracking-wider text-white">WAHYU BAMBANG S.</span>
-                        <p class="text-xs text-emerald-400 font-medium">Automation & Building Controls</p>
+                        <p class="text-xs text-emerald-400 font-medium">Electrical & Building Automation Engineer</p>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center gap-6">
                     <a href="#about" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Profil</a>
-                    <a href="#projects" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Alat & Inovasi</a>
-                    <a href="#simulation" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Simulasi Interaktif</a>
+                    <a href="#projects" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Inovasi Alat</a>
+                    <a href="#simulation" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Lab Simulasi</a>
                     <a href="#contact" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-sm font-semibold transition-all shadow-md shadow-emerald-500/10">Hubungi Saya</a>
                 </div>
                 <!-- Mobile menu button -->
@@ -85,44 +174,47 @@
                 <div class="lg:col-span-7 space-y-6 text-left">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Siap Membawa Solusi Otomatisasi Baru
+                        Menghubungkan Logika Kelistrikan & Otomatisasi Modern Gedung
                     </div>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none">
-                        Mengubah Logika Menjadi <span class="text-emerald-400">Efisiensi & Keamanan</span> Gedung.
+                        Mengubah Logika Menjadi <span class="text-emerald-400">Efisiensi & Digitalisasi</span> Gedung.
                     </h1>
-                    <p class="text-slate-400 text-lg sm:text-xl max-w-2xl font-light leading-relaxed">
-                        Halo, saya Bambang. Seorang praktisi <strong class="text-slate-200">Engineering & Building Automation</strong>. Saya merancang, memprogram, dan merakit sistem kontrol terintegrasi untuk menghemat energi, mengotomatisasi HVAC, mengoptimalkan keamanan koridor malam, dan menjaga keselamatan gedung bertingkat.
+                    <p class="text-slate-300 text-lg sm:text-xl font-normal leading-relaxed">
+                        Selamat datang di portofolio interaktif saya. Saya adalah spesialis di bidang <strong>Engineering & Building Automation</strong> dengan rekam jejak dalam merancang, memprogram, dan merawat sistem utilitas vital gedung bertingkat. Di halaman ini, Anda dapat mensimulasikan langsung hasil karya instalasi saya secara interaktif.
+                    </p>
+                    <p class="text-slate-400 text-base font-light leading-relaxed">
+                        Saya berkomitmen penuh untuk mengoptimalkan keandalan sistem kelistrikan dan menginisiasi efisiensi energi gedung bertingkat melalui digitalisasi tepat guna. Keahlian dalam memprogram kontroler, membuat panel 3-Phase, serta mengembangkan sistem pencatatan berbasis digital sehingga bermanfaat bagi perusahaan.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
                         <a href="#simulation" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
-                            <i class="fa-solid fa-gamepad"></i> Mainkan Demo Sistem
+                            <i class="fa-solid fa-gamepad"></i> Coba 5 Demo Simulator
                         </a>
                         <a href="#projects" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-semibold transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-layer-group"></i> Lihat 4 Proyek Utama
+                            <i class="fa-solid fa-layer-group"></i> Lihat Galeri Proyek
                         </a>
                     </div>
                 </div>
                 <div class="lg:col-span-5 relative">
-                    <!-- Tech visual feature -->
+                    <!-- Tech visual feature card -->
                     <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl shadow-2xl backdrop-blur-sm relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-3 text-xs font-mono text-emerald-500/30">ID_BAMS_SYS_02</div>
-                        <h3 class="text-sm font-semibold text-emerald-400 tracking-wider uppercase mb-4">Kompetensi Utama</h3>
+                        <div class="absolute top-0 right-0 p-3 text-xs font-mono text-emerald-500/30">ID_BAMS_SYS_03</div>
+                        <h3 class="text-sm font-semibold text-emerald-400 tracking-wider uppercase mb-4">Spesialisasi & Keahlian</h3>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
-                                <span class="text-slate-300"><i class="fa-solid fa-microchip text-emerald-400 mr-2"></i>Microcontroller/PLC Program</span>
-                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Expert</span>
+                                <span class="text-slate-300"><i class="fa-solid fa-drafting-compass text-emerald-400 mr-2"></i>Perancangan Panel CAD (VPCB/JTV)</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Professional</span>
                             </div>
                             <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
-                                <span class="text-slate-300"><i class="fa-solid fa-network-wired text-emerald-400 mr-2"></i>System Integration (Fire/Gate/Lift/Security)</span>
+                                <span class="text-slate-300"><i class="fa-solid fa-mobile-screen text-emerald-400 mr-2"></i>AppSheet Digitalization & Barcode QR</span>
                                 <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Implemented</span>
                             </div>
                             <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
-                                <span class="text-slate-300"><i class="fa-solid fa-fan text-emerald-400 mr-2"></i>AHU & HVAC Control Design</span>
-                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">95% Efficiency</span>
+                                <span class="text-slate-300"><i class="fa-solid fa-microchip text-emerald-400 mr-2"></i>Program PLC & Mikrokontroler</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Expert</span>
                             </div>
                             <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
-                                <span class="text-slate-300"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2"></i>Intrusion Detection & Safety Alarms</span>
-                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Active</span>
+                                <span class="text-slate-300"><i class="fa-solid fa-network-wired text-emerald-400 mr-2"></i>Integrasi Proteksi Kebakaran (MCFA)</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Fail-Safe</span>
                             </div>
                         </div>
                     </div>
@@ -131,14 +223,62 @@
         </div>
     </header>
 
-    <!-- Project Cards Section -->
+    <!-- Main Project Cards Section -->
     <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center space-y-3 mb-16">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">4 Inovasi Otomatisasi Utama</h2>
-            <p class="text-slate-400 max-w-2xl mx-auto">Solusi riil yang dirancang dan dipasang langsung di gedung bertingkat untuk optimasi biaya, kemudahan operasi, dan proteksi maksimal.</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Proyek Otomatisasi & Desain Panel</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">Solusi riil yang dirancang, digambar CAD, dan dipasang langsung di lapangan untuk efisiensi operasional dan perlindungan optimal.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Project 5: JTV 3-Phase Electrical Panel & Barcode Scan -->
+            <div class="bg-slate-900 border-2 border-emerald-500/30 rounded-2xl p-6 hover:border-emerald-500/60 transition-all flex flex-col justify-between relative overflow-hidden md:col-span-2">
+                <div class="absolute -right-10 -top-10 h-40 w-40 bg-emerald-500/5 rounded-full blur-3xl"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                            <i class="fa-solid fa-star"></i> Proyek Utama Terbaru
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Panel Listrik 3-Phase JTV Lt. 3 & Digitalisasi AppSheet</h3>
+                        <p class="text-sm text-emerald-400 font-medium">PT GRAHA PENA JAWA POS — Desain Gambar CAD & Otomatisasi Pencatatan</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Mendesain gambar layout dimensi panel distribusi listrik 3-Phase 40A secara akurat untuk melayani 11 tenant di Lantai 3 JTV (PT Graha Pena Jawa Pos). 
+                            Untuk merevolusi pencatatan meteran manual yang rawan salah tulis, saya merancang inovasi **Aplikasi Scanner Barcode berbasis AppSheet**. 
+                            Petugas cukup memindai kode QR tenant pada panel, data meteran bulan lalu otomatis muncul, dan sisa input pemakaian terbaru langsung tersinkronisasi ke cloud database secara real-time.
+                        </p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                            <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
+                                <span class="text-slate-500 block">Kapasitas Panel:</span>
+                                <strong class="text-slate-200">3-Phase 40A</strong>
+                            </div>
+                            <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
+                                <span class="text-slate-500 block">Distribusi Beban:</span>
+                                <strong class="text-slate-200">11 Tenant (10A MCB)</strong>
+                            </div>
+                            <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs col-span-2 sm:col-span-1">
+                                <span class="text-slate-500 block">Efisiensi Pencatatan:</span>
+                                <strong class="text-emerald-400">100% Paperless & Akurat</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <span class="text-[10px] font-mono text-slate-500 block uppercase tracking-wider">PREVIEW CETAK BIRU PANEL (DIAGRAM CAD)</span>
+                        <div class="aspect-auto bg-slate-900 rounded-lg overflow-hidden border border-slate-800 flex items-center justify-center relative p-2">
+                            <!-- Mock Drawing Frame showing drawings -->
+                            <div class="w-full text-center space-y-2 p-4 border border-dashed border-slate-700 rounded bg-slate-950/40">
+                                <i class="fa-solid fa-file-invoice text-emerald-500 text-4xl"></i>
+                                <p class="text-xs text-slate-300 font-bold">DIMENSI PANEL JTV LT 3</p>
+                                <p class="text-[10px] text-slate-500">Draw: Wahyu Bambang S. | Date: 30 April 2025</p>
+                                <span class="text-[9px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block">PT GRAHA PENA JAWA POS</span>
+                            </div>
+                        </div>
+                        <a href="#simulation" onclick="switchTab('sim-jtv-panel')" class="w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-qrcode"></i> Buka Simulator & Scan Barcode
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Project 1: Motion Detector Pantry -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
                 <div>
@@ -164,8 +304,7 @@
             </div>
 
             <!-- Project 2: Fire Integration Control Panel -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between relative overflow-hidden">
-                <div class="absolute -right-10 -top-10 h-32 w-32 bg-emerald-500/5 rounded-full blur-2xl"></div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
                 <div>
                     <div class="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
                         <i class="fa-solid fa-fire-extinguisher text-xl"></i>
@@ -173,7 +312,7 @@
                     <h3 class="text-xl font-bold text-white mb-2">Integrated Fire & Safety Command Panel</h3>
                     <p class="text-sm text-emerald-400 font-medium mb-4">Sistem Integrasi Penyelamatan Gedung</p>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Menyatukan Master Fire Alarm (MCFA), sistem pembatas gerbang (B. Gate), sirkulasi udara (Fresh Air Fan), dan lift/elevator (Kone) ke dalam satu panel kontrol terintegrasi berbasis mikrokontroler. Memastikan sistem evakuasi langsung aktif secara otomatis saat kebakaran dipicu.
+                        Menyatukan Master Fire Alarm (MCFA), sistem pembatas gerbang (B. Gate), sirkulasi udara (Fresh Air Fan), dan lift/elevator (Kone) ke dalam satu panel kontrol terintegrasi berbasis mikrokontroler. Memastikan evakuasi otomatis aktif instan saat kebakaran dipicu.
                     </p>
                 </div>
                 <div class="border-t border-slate-800 pt-4 mt-4 space-y-2">
@@ -183,7 +322,7 @@
                     </div>
                     <div class="flex justify-between text-xs text-slate-400">
                         <span>Teknologi:</span>
-                        <span class="font-semibold text-slate-200">Microcontroller, HMI LCD 16x2, Relay Matrix</span>
+                        <span class="font-semibold text-slate-200">Microcontroller, HMI LCD, Relay Matrix</span>
                     </div>
                 </div>
             </div>
@@ -197,24 +336,23 @@
                     <h3 class="text-xl font-bold text-white mb-2">Smart AHU Interface Control</h3>
                     <p class="text-sm text-emerald-400 font-medium mb-4">HMI & Kontrol Sentral Penyejuk Udara</p>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Sistem kontrol dan antarmuka untuk memantau serta menyalakan/mematikan Air Handling Unit (AHU) secara efisien dan terpusat di gedung bertingkat. Memudahkan manajemen operasional harian teknisi dan mencegah lonjakan konsumsi listrik secara berlebihan saat start-up.
+                        Sistem kontrol dan antarmuka untuk memantau serta menyalakan/mematikan Air Handling Unit (AHU) secara efisien dan terpusat di gedung bertingkat. Memudahkan operasional teknisi dan mencegah lonjakan konsumsi listrik (surge current) start-up.
                     </p>
                 </div>
                 <div class="border-t border-slate-800 pt-4 mt-4 space-y-2">
                     <div class="flex justify-between text-xs text-slate-400">
-                        <span>Waktu Kontrol Teknisi:</span>
-                        <span class="font-bold text-emerald-400">Pangkas Hingga 85% Waktu</span>
+                        <span>Pangkas Waktu Teknisi:</span>
+                        <span class="font-bold text-emerald-400">Pangkas 85% Waktu Cek</span>
                     </div>
                     <div class="flex justify-between text-xs text-slate-400">
                         <span>Teknologi:</span>
-                        <span class="font-semibold text-slate-200">Centralized Interface, Smart Overload Protection</span>
+                        <span class="font-semibold text-slate-200">Centralized Interface, Surge Protection</span>
                     </div>
                 </div>
             </div>
 
             <!-- Project 4: Night Security Corridor Motion Alarm -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between relative overflow-hidden">
-                <div class="absolute -right-10 -top-10 h-32 w-32 bg-emerald-500/5 rounded-full blur-2xl"></div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
                 <div>
                     <div class="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
                         <i class="fa-solid fa-user-shield text-xl"></i>
@@ -222,17 +360,17 @@
                     <h3 class="text-xl font-bold text-white mb-2">Night Corridor Security Motion Alarm</h3>
                     <p class="text-sm text-emerald-400 font-medium mb-4">Sistem Pengawasan Patroli Malam Otomatis</p>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Sistem proteksi koridor tenant malam hari menggunakan sensor gerak terintegrasi. Sistem otomatis menyala (*armed*) via timer jam malam (21.00 - 05.00) saat tenant kosong. Jika ada gerakan mencurigakan, sistem mengirimkan sinyal bahaya ke pos sekuriti secara real-time.
+                        Sistem proteksi koridor tenant malam hari menggunakan sensor gerak terintegrasi. Sistem otomatis bersiap (*armed*) via timer jam malam (21.00 - 05.00). Jika ada gerakan mencurigakan, sistem mengirim alarm ke pos sekuriti secara real-time.
                     </p>
                 </div>
                 <div class="border-t border-slate-800 pt-4 mt-4 space-y-2">
                     <div class="flex justify-between text-xs text-slate-400">
-                        <span>Waktu Operasional Timer:</span>
+                        <span>Waktu Operasional:</span>
                         <span class="font-bold text-emerald-400">Pukul 21.00 - 05.00</span>
                     </div>
                     <div class="flex justify-between text-xs text-slate-400">
                         <span>Teknologi:</span>
-                        <span class="font-semibold text-slate-200">RTC Timer, PIR Sensor, Security Console Alarm</span>
+                        <span class="font-semibold text-slate-200">RTC Timer, PIR Sensor, Security Console</span>
                     </div>
                 </div>
             </div>
@@ -245,28 +383,249 @@
             
             <div class="text-center space-y-3 mb-12">
                 <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">Laboratorium Simulasi</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Coba & Operasikan Alatnya Di Sini</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Silakan pilih dan jalankan panel virtual di bawah ini untuk melihat bagaimana sistem otomatisasi saya menyelesaikan masalah riil secara real-time.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Mainkan Demo Interaktif Alat Saya</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Silakan operasikan langsung panel-panel virtual di bawah ini untuk melihat bagaimana inovasi engineering saya beroperasi.</p>
             </div>
 
             <!-- Simulation Tabs -->
             <div class="flex flex-wrap justify-center gap-2 mb-10">
-                <button onclick="switchTab('sim-pantry')" id="btn-sim-pantry" class="tab-btn px-5 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold transition-all text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-bolt"></i> 1. Smart Pantry Saving
+                <button onclick="switchTab('sim-jtv-panel')" id="btn-sim-jtv-panel" class="tab-btn px-5 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-qrcode"></i> 1. Panel JTV & AppSheet Barcode
+                </button>
+                <button onclick="switchTab('sim-pantry')" id="btn-sim-pantry" class="tab-btn px-5 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> 2. Smart Pantry Saving
                 </button>
                 <button onclick="switchTab('sim-fire')" id="btn-sim-fire" class="tab-btn px-5 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-fire"></i> 2. Panel Integrasi Fire & Safety
+                    <i class="fa-solid fa-fire"></i> 3. Panel Integrasi Fire & Safety
                 </button>
                 <button onclick="switchTab('sim-ahu')" id="btn-sim-ahu" class="tab-btn px-5 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-fan"></i> 3. Interface Monitor AHU
+                    <i class="fa-solid fa-fan"></i> 4. Monitor AHU
                 </button>
                 <button onclick="switchTab('sim-security')" id="btn-sim-security" class="tab-btn px-5 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-user-shield"></i> 4. Night Security Alarm
+                    <i class="fa-solid fa-user-shield"></i> 5. Night Security Alarm
                 </button>
             </div>
 
-            <!-- TAB 1: SMART PANTRY SIMULATION -->
-            <div id="sim-pantry" class="tab-content block">
+            <!-- TAB 1: NEW COMBINED JTV 3-PHASE PANEL & APPSHEET BARCODE SCANNER -->
+            <div id="sim-jtv-panel" class="tab-content block">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <!-- Left Column: 3-Phase 11 Tenant Electrical Panel Simulator -->
+                    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                        <div class="panel-body">
+                            <div class="panel-title">▌ PANEL LISTRIK 3-PHASE 40A — LANTAI 3 ▐<br><span style="font-size:9px;opacity:.7">JTV LT.3 | PT GRAHA PENA JAWA POS | Draw: Wahyu Bambang S.</span></div>
+
+                            <!-- Voltage Display -->
+                            <div class="kv-display mb-3">
+                                <div class="kv-row">
+                                    <div class="kv-cell"><div class="kv-val kv-r" id="v-r">228<span style="font-size:9px">V</span></div><div class="kv-lbl">Phase R</div></div>
+                                    <div class="kv-cell"><div class="kv-val kv-s" id="v-s">231<span style="font-size:9px">V</span></div><div class="kv-lbl">Phase S</div></div>
+                                    <div class="kv-cell"><div class="kv-val kv-t" id="v-t">229<span style="font-size:9px">V</span></div><div class="kv-lbl">Phase T</div></div>
+                                    <div class="kv-cell border-l border-slate-700 pl-2"><div class="kv-val kv-w" id="v-total">0<span style="font-size:9px">W</span></div><div class="kv-lbl">Beban Total</div></div>
+                                </div>
+                            </div>
+
+                            <!-- Bus Bars -->
+                            <div class="bus-bar">
+                                <span class="bus-label">R</span><div class="bus-strip bus-r"></div>
+                                <span class="bus-label">S</span><div class="bus-strip bus-s"></div>
+                                <span class="bus-label">T</span><div class="bus-strip bus-t"></div>
+                                <span class="bus-label">N</span><div class="bus-strip bus-n"></div>
+                                <span class="bus-label">⏚</span><div class="bus-strip bus-gnd"></div>
+                            </div>
+
+                            <!-- Main MCB + Emergency Row -->
+                            <div class="section-box">
+                                <div style="font-size:9px;font-family:'Share Tech Mono', monospace;color:#94a3b8;margin-bottom:6px">▸ MAIN CIRCUIT BREAKER (MCB UTAMA)</div>
+                                <div class="mcb-main-row">
+                                    <div class="mcb main-mcb" onclick="toggleMain()" id="mcb-main" title="Klik untuk toggle MCB Utama">
+                                        <div class="mcb-num" style="font-size:10px">MAIN</div>
+                                        <div style="display:flex;gap:3px;margin:2px 0"><div class="phase-dot ph-r"></div><div class="phase-dot ph-s"></div><div class="phase-dot ph-t"></div></div>
+                                        <div class="main-handle" id="handle-main"><div class="mcb-handle-dot"></div></div>
+                                        <div class="mcb-amp">3P — 40A</div>
+                                        <div class="status-badge badge-on" id="badge-main">ON</div>
+                                    </div>
+                                    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+                                        <div class="info-row">
+                                            <span>Beban Total:</span>
+                                            <div class="load-bar-wrap"><div class="load-bar safe" id="main-load-bar" style="width:0%"></div></div>
+                                            <span id="main-load-pct">0%</span>
+                                        </div>
+                                        <div class="info-row"><span>Frekuensi:</span><span style="color:#38bdf8">50.0 Hz</span></div>
+                                        <div class="info-row"><span>Power Factor:</span><span style="color:#38bdf8" id="pf-val">0.87</span></div>
+                                        <div class="ctrl-row">
+                                            <button class="emergency-btn" onclick="emergencyTrip()">⚡ TRIP ALL</button>
+                                            <button class="reset-btn" onclick="resetAll()">↺ RESET</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 11 Tenant MCBs -->
+                            <div class="section-box">
+                                <div style="font-size:9px;font-family:'Share Tech Mono', monospace;color:#94a3b8;margin-bottom:8px">▸ SUBCIRCUIT — 11 TENANT (MCB 10A SINGLE-PHASE) &amp; INTEGRASI SCAN</div>
+                                <div class="mcb-grid" id="tenant-grid"></div>
+                            </div>
+
+                            <!-- Load Summary -->
+                            <div class="section-box" style="padding:8px 12px">
+                                <div style="font-size:9px;font-family:'Share Tech Mono', monospace;color:#94a3b8;margin-bottom:4px">▸ LOG LOGIKA OPERASI PANEL</div>
+                                <div class="tenants-log" id="activity-log"></div>
+                            </div>
+
+                            <div style="text-align:right;font-size:8px;font-family:'Share Tech Mono', monospace;color:#64748b;margin-top:4px">REV:2.1 | umG Controls | Wahyu Bambang S.</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: AppSheet Mockup -->
+                    <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-[10px] font-bold border border-blue-500/20">APPSHEET INTEGRATION</span>
+                                <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="text-xs text-slate-400 font-mono">Database Linked</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Simulasi AppSheet Scanner</h3>
+                            <p class="text-xs text-slate-400 mb-6">Petugas tidak perlu mencatat di kertas. Cukup klik tombol <strong>"Scan Meteran"</strong> di panel listrik sebelah kiri, atau gunakan tombol scan di aplikasi handphone virtual ini.</p>
+                        </div>
+
+                        <!-- AppSheet Smartphone UI Container -->
+                        <div class="phone-frame w-full max-w-[310px] mx-auto mb-4">
+                            <div class="phone-notch"></div>
+                            
+                            <!-- AppSheet Screen Content -->
+                            <div class="bg-white text-slate-800 min-h-[460px] flex flex-col justify-between pt-5">
+                                <!-- App Header -->
+                                <div class="bg-[#1e293b] text-white p-3 flex items-center justify-between shadow">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-qrcode text-emerald-400"></i>
+                                        <span class="text-xs font-bold tracking-wide">Bams kWh Recorder</span>
+                                    </div>
+                                    <i class="fa-solid fa-cloud-arrow-up text-xs text-emerald-400"></i>
+                                </div>
+
+                                <!-- Dynamic App Interface Body -->
+                                <div class="p-3 flex-1 overflow-y-auto" id="appsheet-screen-body">
+                                    <!-- Screen 1: Camera Scanner Mode -->
+                                    <div id="appsheet-scanner" class="block space-y-4">
+                                        <div class="text-center">
+                                            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Metode Scanner Barcode</p>
+                                            <p class="text-[11px] text-slate-600">Arahkan kamera ke QR meteran tenant</p>
+                                        </div>
+
+                                        <!-- Scan Viewfinder Frame -->
+                                        <div class="w-full aspect-square max-w-[180px] mx-auto bg-slate-900 rounded-xl relative overflow-hidden border-2 border-slate-700 flex flex-col items-center justify-center text-white">
+                                            <div class="absolute inset-0 bg-slate-950 opacity-40"></div>
+                                            <!-- QR Mock Code inside -->
+                                            <div class="z-10 text-slate-400 text-center p-2">
+                                                <i class="fa-solid fa-qrcode text-5xl text-emerald-400 animate-pulse"></i>
+                                                <p class="text-[9px] mt-2 font-mono">MENUNGGU QR CODE...</p>
+                                            </div>
+                                            <!-- Laser Line Scanner -->
+                                            <div class="absolute left-0 right-0 h-0.5 bg-red-500 shadow-md shadow-red-500/50 laser-anim z-20"></div>
+                                        </div>
+
+                                        <div class="text-center space-y-2">
+                                            <span class="text-xs text-slate-500">ATAU</span>
+                                            <div class="px-2">
+                                                <select id="tenant-select-manual" onchange="simulateAppSheetScan(this.value)" class="w-full text-xs p-2 rounded border border-slate-300 bg-slate-50 text-slate-700">
+                                                    <option value="">-- PILIH TENANT SECARA MANUAL --</option>
+                                                    <option value="1">Tenant 01 (T-01)</option>
+                                                    <option value="2">Tenant 02 (T-02)</option>
+                                                    <option value="3">Tenant 03 (T-03)</option>
+                                                    <option value="4">Tenant 04 (T-04)</option>
+                                                    <option value="5">Tenant 05 (T-05)</option>
+                                                    <option value="6">Tenant 06 (T-06)</option>
+                                                    <option value="7">Tenant 07 (T-07)</option>
+                                                    <option value="8">Tenant 08 (T-08)</option>
+                                                    <option value="9">Tenant 09 (T-09)</option>
+                                                    <option value="10">Tenant 10 (T-10)</option>
+                                                    <option value="11">Tenant 11 (T-11)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Screen 2: Form Input Mode (Hidden initially) -->
+                                    <div id="appsheet-form" class="hidden space-y-3 text-left">
+                                        <div class="flex items-center gap-2 border-b pb-1.5 mb-2">
+                                            <i class="fa-solid fa-file-pen text-blue-600"></i>
+                                            <span class="text-xs font-bold text-slate-700">Form Pencatatan kWh</span>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-2 gap-2 text-[11px]">
+                                            <div>
+                                                <span class="text-slate-400">Kode Tenant:</span>
+                                                <p class="font-bold text-slate-800" id="form-tenant-name">-</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-slate-400">Fase Panel:</span>
+                                                <p class="font-bold text-slate-800" id="form-tenant-phase">-</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-1">
+                                            <label class="text-[10px] text-slate-500 font-bold block">FOTO VERIFIKASI METERAN</label>
+                                            <div class="p-2 border border-dashed rounded bg-slate-50 flex items-center justify-center gap-2">
+                                                <i class="fa-solid fa-camera text-slate-400"></i>
+                                                <span class="text-[10px] text-slate-500">MOCKUP_CAMERA_OK.jpg</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <div class="bg-slate-100 p-2 rounded border">
+                                                <span class="text-[10px] text-slate-500 block">METERAN BULAN LALU (kWh)</span>
+                                                <strong class="text-sm text-slate-700" id="form-prev-kwh">0</strong>
+                                            </div>
+
+                                            <div class="bg-blue-50 p-2 rounded border border-blue-200">
+                                                <label class="text-[10px] text-blue-600 block font-bold">METERAN BULAN INI (kWh)</label>
+                                                <input type="number" id="form-now-kwh" oninput="calculateKwhDiff()" class="w-full text-sm font-bold bg-white border border-blue-300 rounded p-1 text-slate-800">
+                                            </div>
+                                        </div>
+
+                                        <div class="p-2 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded flex justify-between items-center text-[11px]">
+                                            <span>Pemakaian Bulan ini:</span>
+                                            <strong class="text-xs" id="form-diff-kwh">0 kWh</strong>
+                                        </div>
+
+                                        <div class="flex gap-2 pt-2">
+                                            <button onclick="saveAppSheetData()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded text-xs shadow">SIMPAN DATA</button>
+                                            <button onclick="cancelAppSheetForm()" class="bg-slate-300 hover:bg-slate-400 text-slate-700 py-2 px-3 rounded text-xs">BATAL</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- App Navigation Bar -->
+                                <div class="bg-slate-100 border-t flex justify-around items-center py-2 text-[10px] text-slate-500">
+                                    <div class="flex flex-col items-center cursor-pointer text-[#1e293b]" onclick="cancelAppSheetForm()">
+                                        <i class="fa-solid fa-camera text-base"></i>
+                                        <span>Scan QR</span>
+                                    </div>
+                                    <div class="flex flex-col items-center opacity-50">
+                                        <i class="fa-solid fa-table-list text-base"></i>
+                                        <span>Database</span>
+                                    </div>
+                                    <div class="flex flex-col items-center opacity-50">
+                                        <i class="fa-solid fa-gear text-base"></i>
+                                        <span>Settings</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Database Cloud Mock View -->
+                        <div class="bg-slate-950 p-3 rounded-xl border border-slate-850">
+                            <span class="text-[9px] font-mono text-slate-500 block mb-1">MOCK DATABASE CLOUD APPSHEET LOG</span>
+                            <div class="max-h-[90px] overflow-y-auto text-[10px] font-mono text-slate-300 divide-y divide-slate-900" id="appsheet-database-log">
+                                <p class="py-1 text-slate-500">Menunggu data disinkronkan...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: SMART PANTRY SIMULATION -->
+            <div id="sim-pantry" class="tab-content hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                     <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
                         <div>
@@ -310,7 +669,6 @@
                         <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.03),transparent_60%)]"></div>
                         
                         <div class="relative z-10 w-full max-w-md text-center space-y-8">
-                            <!-- Pantry Lights and Fan Visual -->
                             <div class="flex justify-around items-center gap-6">
                                 <div class="space-y-2">
                                     <div id="visual-light" class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center transition-all duration-300">
@@ -337,18 +695,18 @@
                 </div>
             </div>
 
-            <!-- TAB 2: FIRE INTEGRATION CONTROL PANEL (DARI FOTO) -->
+            <!-- TAB 3: FIRE INTEGRATION CONTROL PANEL -->
             <div id="sim-fire" class="tab-content hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                     <!-- Left Column: Guide -->
                     <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
                         <div>
                             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                                <i class="fa-solid fa-triangle-exclamation"></i> Berdasarkan Sistem Asli di Foto
+                                <i class="fa-solid fa-triangle-exclamation"></i> Berdasarkan Sistem Asli Lapangan
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Simulasi Panel Integrasi</h3>
                             <p class="text-sm text-slate-400 leading-relaxed mb-6">
-                                Silakan gunakan panel simulasi di sebelah kanan. Panel ini menduplikasi fungsi dari panel fisik yang saya rakit. 
+                                Silakan gunakan panel simulasi di sebelah kanan. Panel ini menduplikasi fungsi dari panel fisik keselamatan yang saya integrasikan di lapangan. 
                             </p>
 
                             <div class="space-y-4">
@@ -377,13 +735,11 @@
 
                     <!-- Right Column: Interactive Digital Twin of the Beige Panel -->
                     <div class="lg:col-span-7 flex justify-center items-center p-4">
-                        <!-- Beige Panel Frame -->
                         <div class="w-full max-w-sm bg-[#e2dec9] text-slate-900 border-4 border-slate-400 rounded-3xl p-6 shadow-2xl relative select-none">
                             <div class="absolute inset-x-0 top-0 h-4 bg-white/20 rounded-t-2xl"></div>
 
                             <!-- Header: Drill Button & Screen -->
                             <div class="flex flex-col items-center gap-4 mb-6">
-                                <!-- Drill Section -->
                                 <div class="flex flex-col items-center">
                                     <span class="text-[10px] font-bold tracking-widest text-slate-600 bg-white/40 px-2 py-0.5 rounded border border-slate-400/50">DRILL</span>
                                     <button onclick="pressDrillButton()" class="mt-1 h-10 w-10 rounded-full bg-blue-900 border-2 border-slate-500 hover:bg-blue-850 active:scale-90 transition-all shadow-md flex items-center justify-center cursor-pointer">
@@ -393,7 +749,7 @@
                                 </div>
 
                                 <!-- Backlit 16x2 LCD Display -->
-                                <div class="w-full bg-blue-900 text-cyan-200 border-2 border-slate-700 p-2 rounded shadow-inner flex flex-col items-center justify-center min-h-[55px] select-none text-center">
+                                <div class="w-full bg-blue-900 text-cyan-200 border-2 border-slate-700 p-2 rounded shadow-inner flex flex-col items-center justify-center min-h-[55px] text-center">
                                     <p id="lcd-line1" class="mono-font text-xs tracking-wider font-semibold select-none">* PUSH 'DRILL' *</p>
                                     <p id="lcd-line2" class="mono-font text-xs tracking-wider font-semibold select-none">* BUTTON   *</p>
                                 </div>
@@ -401,29 +757,23 @@
 
                             <!-- Mode Section (Auto/Manual Select) -->
                             <div class="grid grid-cols-2 gap-4 mb-6 items-center">
-                                <!-- AUTO Indicator -->
                                 <div class="flex flex-col items-center">
                                     <span class="text-[9px] font-bold text-slate-600 bg-white/30 px-1 py-0.5 rounded border border-slate-400/40">AUTO</span>
                                     <div id="led-auto" class="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-900 mt-2 transition-all"></div>
                                 </div>
-                                <!-- MANUAL Indicator -->
                                 <div class="flex flex-col items-center">
                                     <span class="text-[9px] font-bold text-slate-600 bg-white/30 px-1 py-0.5 rounded border border-slate-400/40">MANUAL</span>
                                     <div id="led-manual" class="w-5 h-5 rounded-full bg-emerald-500 border border-emerald-300 mt-2 transition-all glow-active-green"></div>
                                 </div>
 
-                                <!-- Key & Switch (Simulated with rotating selector) -->
                                 <div class="col-span-2 flex justify-center items-center gap-8 py-2">
-                                    <!-- Selector Switch -->
                                     <div class="flex flex-col items-center">
                                         <div onclick="toggleModeSwitch()" class="w-14 h-14 rounded-full bg-slate-800 border-2 border-slate-600 relative flex items-center justify-center cursor-pointer transition-transform duration-300 shadow-md" id="rotary-switch">
-                                            <!-- Pointer -->
                                             <div class="w-2 h-10 bg-white rounded-full absolute -top-1" style="transform-origin: center 15px;"></div>
                                         </div>
                                         <span class="text-[9px] font-bold text-slate-600 mt-1.5">AUTO / MANUAL</span>
                                     </div>
 
-                                    <!-- Key Switch (Sound Alarm Lock) -->
                                     <div class="flex flex-col items-center">
                                         <div class="relative w-12 h-12 bg-zinc-400 border-2 border-zinc-600 rounded-full flex items-center justify-center">
                                             <i class="fa-solid fa-key text-slate-800 text-lg"></i>
@@ -437,7 +787,6 @@
                             <div class="border-t border-slate-400/55 pt-4">
                                 <p class="text-[10px] font-bold text-slate-700 text-center mb-3 tracking-wider">OUTPUT SYSTEM INTEGRATION</p>
                                 <div class="grid grid-cols-2 gap-3">
-                                    <!-- Sound Alarm -->
                                     <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
                                         <div>
                                             <p class="text-[9px] font-bold text-slate-600">SOUND ALARM</p>
@@ -446,7 +795,6 @@
                                         <div id="led-status-alarm" class="w-3.5 h-3.5 rounded-full bg-slate-400"></div>
                                     </div>
 
-                                    <!-- Barrier Gate -->
                                     <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
                                         <div>
                                             <p class="text-[9px] font-bold text-slate-600">B. GATE (PINTU)</p>
@@ -455,7 +803,6 @@
                                         <div id="led-status-gate" class="w-3.5 h-3.5 rounded-full bg-slate-400"></div>
                                     </div>
 
-                                    <!-- Lift Kone -->
                                     <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
                                         <div>
                                             <p class="text-[9px] font-bold text-slate-600">LIFT KONE</p>
@@ -464,7 +811,6 @@
                                         <div id="led-status-lift" class="w-3.5 h-3.5 rounded-full bg-slate-400"></div>
                                     </div>
 
-                                    <!-- Fresh Air Fan -->
                                     <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
                                         <div>
                                             <p class="text-[9px] font-bold text-slate-600">FRESH AIR FAN</p>
@@ -475,7 +821,6 @@
                                 </div>
                             </div>
 
-                            <!-- Panel Branding Logo -->
                             <div class="mt-4 flex justify-between items-end">
                                 <span class="text-[8px] text-slate-500">REV: 2.1</span>
                                 <span class="mono-font font-bold tracking-widest text-slate-700 italic border-b border-slate-500">umG Controls</span>
@@ -485,7 +830,7 @@
                 </div>
             </div>
 
-            <!-- TAB 3: AHU SYSTEM INTERFACE -->
+            <!-- TAB 4: AHU SYSTEM INTERFACE -->
             <div id="sim-ahu" class="tab-content hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                     <!-- Control Side -->
@@ -527,7 +872,6 @@
 
                             <!-- Floors AHU Controls -->
                             <div class="divide-y divide-slate-900">
-                                <!-- Floor 3 -->
                                 <div class="p-4 flex items-center justify-between">
                                     <div>
                                         <p class="text-sm font-bold text-white">AHU LANTAI 3</p>
@@ -541,7 +885,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Floor 2 -->
                                 <div class="p-4 flex items-center justify-between">
                                     <div>
                                         <p class="text-sm font-bold text-white">AHU LANTAI 2</p>
@@ -555,7 +898,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Floor 1 -->
                                 <div class="p-4 flex items-center justify-between">
                                     <div>
                                         <p class="text-sm font-bold text-white">AHU LANTAI 1</p>
@@ -574,7 +916,7 @@
                 </div>
             </div>
 
-            <!-- TAB 4: NIGHT SECURITY CORRIDOR ALARM -->
+            <!-- TAB 5: NIGHT SECURITY CORRIDOR ALARM -->
             <div id="sim-security" class="tab-content hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                     <!-- Control Settings Panel -->
@@ -584,7 +926,6 @@
                             <h3 class="text-xl font-bold text-white mt-2 mb-2">Simulasi Pengawasan Koridor</h3>
                             <p class="text-sm text-slate-400 mb-6 leading-relaxed">Sistem ini bekerja otomatis dengan pengatur waktu. Di luar jam operasional (21:00 - 05:00), sensor PIR aktif mendeteksi penyusup malam hari.</p>
                             
-                            <!-- Clock Slider & Settings -->
                             <div class="space-y-5 bg-slate-950 p-4 rounded-xl border border-slate-850">
                                 <div>
                                     <div class="flex justify-between items-center mb-1">
@@ -621,10 +962,8 @@
 
                     <!-- Visual Desk Display -->
                     <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden min-h-[380px]">
-                        <!-- Background glow overlay for intrusion alarm -->
                         <div id="intrusion-bg-overlay" class="absolute inset-0 bg-red-500/0 transition-all duration-300 pointer-events-none"></div>
                         
-                        <!-- Top Bar of Security Monitor -->
                         <div class="relative z-10 flex justify-between items-center border-b border-slate-800 pb-3">
                             <span class="text-xs font-mono text-slate-400"><i class="fa-solid fa-tv"></i> MONITOR POS SECURITY</span>
                             <div class="flex items-center gap-2">
@@ -633,21 +972,17 @@
                             </div>
                         </div>
 
-                        <!-- Main Screen Graphic -->
                         <div class="relative z-10 my-6 flex flex-col items-center justify-center text-center py-6">
-                            <!-- Visual Corridor Icon Status -->
                             <div id="security-screen-icon" class="w-24 h-24 rounded-full bg-slate-950 border-2 border-slate-800 flex items-center justify-center text-slate-400 mb-6 transition-all duration-300">
                                 <i class="fa-solid fa-shield-halved text-4xl"></i>
                             </div>
 
-                            <!-- Big Warn Message on Guard Screen -->
                             <div class="p-4 bg-slate-950/80 rounded-xl border border-slate-800/80 max-w-md w-full">
                                 <p class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Status Log Corridor B (Lantai 2)</p>
                                 <p id="security-status-msg" class="text-sm font-semibold text-emerald-400">Kondisi Aman - Tidak Ada Gerakan</p>
                             </div>
                         </div>
 
-                        <!-- Guard Warning Buzzer Box -->
                         <div class="relative z-10 border-t border-slate-800 pt-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
                             <span class="text-slate-400 text-center sm:text-left">Instalasi: Koridor Tenant lantai 2 - Terkoneksi ke Router Pos Depan</span>
                             <div class="flex gap-2">
@@ -666,23 +1001,23 @@
         <h2 class="text-3xl font-extrabold text-white">Mengenai Saya</h2>
         <div class="p-8 bg-slate-900 border border-slate-800 rounded-3xl relative space-y-6">
             <div class="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-12 rounded-xl bg-emerald-500 flex items-center justify-center text-slate-950 font-bold text-xl">
-                B
+                W
             </div>
             <p class="text-slate-300 text-lg leading-relaxed pt-4">
-                "Saya berkomitmen untuk meningkatkan efisiensi dan keandalan sistem gedung melalui inovasi teknologi yang relevan dan tepat guna. Pengalaman langsung dalam merancang kelistrikan, memprogram sistem, dan mengintegrasikannya di lapangan menjadi bekal saya untuk mengawal tantangan teknik di level yang lebih tinggi."
+                "Saya berkomitmen penuh untuk mengoptimalkan keandalan sistem kelistrikan dan menginisiasi efisiensi energi gedung bertingkat melalui digitalisasi tepat guna. Keahlian dalam memprogram kontroler, merancangan dan membuat panel 3-Phase, serta mengembangkan sistem pencatatan IoT real-time menjadi keunggulan saya untuk selalu berinovasi dengan teknologi"
             </p>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-left pt-4">
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-850">
                     <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Lokasi</p>
-                    <p class="text-sm font-bold text-white mt-1"> Surabaya </p>
+                    <p class="text-sm font-bold text-white mt-1">Surabaya, Indonesia</p>
                 </div>
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-850">
-                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Kandidat</p>
-                    <p class="text-sm font-bold text-white mt-1">Engineering Supervisor</p>
+                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Target Posisi</p>
+                    <p class="text-sm font-bold text-white mt-1">Engineering Supervisor </p>
                 </div>
                 <div class="col-span-2 sm:col-span-1 p-3 bg-slate-950 rounded-xl border border-slate-850">
                     <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Fokus</p>
-                    <p class="text-sm font-bold text-white mt-1">Otomatisasi, Keamanan & Kontrol</p>
+                    <p class="text-sm font-bold text-white mt-1">Otomatisasi, Distribusi Daya, Fire Alarm, Panel Maker</p>
                 </div>
             </div>
         </div>
@@ -692,15 +1027,15 @@
     <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
             <div class="space-y-3">
-                <h2 class="text-3xl font-extrabold text-white">Mari Terhubung</h2>
-                <p class="text-slate-400">Tertarik mendiskusikan implementasi solusi teknik ini di properti atau gedung Anda? Hubungi saya untuk bertukar pikiran!</p>
+                <h2 class="text-3xl font-extrabold text-white">Mari Kolaborasi & Berdiskusi</h2>
+                <p class="text-slate-400">Tertarik mengimplementasikan sistem otomatisasi hemat listrik atau migrasi pencatatan manual ke sistem IoT AppSheet di gedung Anda? Hubungi saya sekarang!</p>
             </div>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-                <a href="https://wa.me/6282334351232" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold transition-all shadow-md shadow-emerald-500/10 flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi via WhatsApp
+                <a href="https://wa.me/6282334351232?text=Halo%20Mas%20Wahyu%20Bambang,%20saya%20tertarik%20berdiskusi%20mengenai%20desain%20panel%20listrik%20dan%20simulasi%20AppSheet%20pencatatan%20kWh%20Anda." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold transition-all shadow-md shadow-emerald-500/10 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi via WhatsApp (082334351232)
                 </a>
-                <a href="https://www.linkedin.com/in/wahyu-bambang-wbs82334351232/" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-bold transition-all flex items-center justify-center gap-2">
+                <a href="https://linkedin.com" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-bold transition-all flex items-center justify-center gap-2">
                     <i class="fa-brands fa-linkedin text-lg"></i> Kunjungi LinkedIn Saya
                 </a>
             </div>
@@ -713,36 +1048,282 @@
         </div>
     </section>
 
+    <!-- Custom Floating Toast Box for Alerts -->
+    <div id="toast-msg" class="fixed bottom-5 right-5 z-50 bg-slate-900 border border-slate-700 text-slate-100 py-3 px-5 rounded-xl shadow-2xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none flex items-center gap-2">
+        <span id="toast-icon"></span>
+        <span id="toast-text" class="text-xs font-semibold"></span>
+    </div>
+
     <footer class="py-8 border-t border-slate-900 text-center text-xs text-slate-500 bg-slate-950">
-        <p>© 2026 Bambang S. All Rights Reserved. Designed for Building Automation Excellence.</p>
+        <p>© 2026 Wahyu Bambang S. All Rights Reserved. Designed for Building Automation & Smart Grid Excellence.</p>
     </footer>
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
+        // Custom Toast Notification System (No Alert allowed)
+        function showToast(text, type = 'success') {
+            const toast = document.getElementById('toast-msg');
+            const icon = document.getElementById('toast-icon');
+            const txt = document.getElementById('toast-text');
+
+            txt.innerText = text;
+            if (type === 'success') {
+                icon.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>';
+            } else if (type === 'warning') {
+                icon.innerHTML = '<i class="fa-solid fa-circle-exclamation text-amber-400 text-base"></i>';
+            } else {
+                icon.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-red-400 text-base"></i>';
+            }
+
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3500);
+        }
+
         // Tab switching logic
         function switchTab(tabId) {
-            // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.add('hidden');
                 tab.classList.remove('block');
             });
-            // Show target
             const target = document.getElementById(tabId);
             target.classList.remove('hidden');
             target.classList.add('block');
 
-            // Reset buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
                 btn.classList.add('bg-slate-800', 'text-slate-300', 'hover:text-white', 'font-semibold');
             });
-            // Highlight active button
             const activeBtn = document.getElementById('btn-' + tabId);
             activeBtn.classList.add('bg-emerald-500', 'text-slate-950', 'font-bold');
             activeBtn.classList.remove('bg-slate-800', 'text-slate-300', 'hover:text-white', 'font-semibold');
         }
 
-        // --- SIMULASI 1: SMART PANTRY ---
+        // --- SIMULASI 1: JTV 3-PHASE PANEL & APPSHEET INTEGRATION ---
+        const tenants = [
+            {id:1, name:'T-01', label:'Tenant 01', amp:'10A', phase:'R', load:320, prevKwh: 1240, currentKwh: null, on:true, tripped:false},
+            {id:2, name:'T-02', label:'Tenant 02', amp:'10A', phase:'S', load:450, prevKwh: 2135, currentKwh: null, on:true, tripped:false},
+            {id:3, name:'T-03', label:'Tenant 03', amp:'10A', phase:'T', load:280, prevKwh: 980, currentKwh: null, on:true, tripped:false},
+            {id:4, name:'T-04', label:'Tenant 04', amp:'10A', phase:'R', load:510, prevKwh: 1560, currentKwh: null, on:true, tripped:false},
+            {id:5, name:'T-05', label:'Tenant 05', amp:'10A', phase:'S', load:390, prevKwh: 3120, currentKwh: null, on:true, tripped:false},
+            {id:6, name:'T-06', label:'Tenant 06', amp:'10A', phase:'T', load:620, prevKwh: 1845, currentKwh: null, on:false, tripped:false},
+            {id:7, name:'T-07', label:'Tenant 07', amp:'10A', phase:'R', load:430, prevKwh: 2490, currentKwh: null, on:true, tripped:false},
+            {id:8, name:'T-08', label:'Tenant 08', amp:'10A', phase:'S', load:275, prevKwh: 1105, currentKwh: null, on:true, tripped:false},
+            {id:9, name:'T-09', label:'Tenant 09', amp:'10A', phase:'T', load:480, prevKwh: 2975, currentKwh: null, on:true, tripped:false},
+            {id:10, name:'T-10', label:'Tenant 10', amp:'10A', phase:'R', load:350, prevKwh: 1620, currentKwh: null, on:true, tripped:false},
+            {id:11, name:'T-11', label:'Tenant 11', amp:'10A', phase:'S', load:410, prevKwh: 2030, currentKwh: null, on:true, tripped:false},
+        ];
+        let mainOn = true;
+        let selectedTenantForForm = null;
+
+        function phaseColor(p) {
+            return p==='R'?'ph-r':p==='S'?'ph-s':'ph-t';
+        }
+
+        function buildGrid() {
+            const grid = document.getElementById('tenant-grid');
+            grid.innerHTML = '';
+            tenants.forEach(t => {
+                const el = document.createElement('div');
+                el.className = 'mcb';
+                el.id = 'mcb-t'+t.id;
+                
+                const state = !mainOn ? 'off' : t.tripped ? 'trip' : t.on ? 'on' : 'off';
+                const handleClass = (state==='on') ? '' : 'off';
+                el.innerHTML = `
+                    <div class="mcb-num">${t.name}</div>
+                    <div style="display:flex;gap:2px;margin:1px 0"><div class="phase-dot ${phaseColor(t.phase)}" title="Phase ${t.phase}"></div></div>
+                    <div class="mcb-handle ${handleClass}" onclick="toggleTenant(${t.id})" title="Toggle Sakelar MCB"><div class="mcb-handle-dot"></div></div>
+                    <div class="mcb-amp">${t.amp}</div>
+                    <button onclick="simulateAppSheetScan(${t.id})" class="mt-1 px-1 py-0.5 rounded text-[8px] font-bold bg-blue-500 hover:bg-blue-600 text-white flex items-center gap-0.5" title="Scan QR Code meteran tenant ini ke AppSheet"><i class="fa-solid fa-qrcode"></i> Scan</button>
+                    <div class="status-badge ${state==='on'?'badge-on':state==='trip'?'badge-trip':'badge-off'} mt-1" id="badge-t${t.id}">${state==='on'?'ON':state==='trip'?'TRIP':'OFF'}</div>
+                `;
+                grid.appendChild(el);
+            });
+            updateTotals();
+        }
+
+        function toggleTenant(id) {
+            if (!mainOn) { addLog('MCB Utama OFF — aktifkan MAIN terlebih dahulu.'); return; }
+            const t = tenants.find(x=>x.id===id);
+            if (t.tripped) { addLog(`${t.label}: Reset trip dulu sebelum diposisikan ON.`); return; }
+            t.on = !t.on;
+            addLog(`${t.label} (Fase ${t.phase}): ${t.on?'ON ✔':'OFF ✖'}`);
+            buildGrid();
+        }
+
+        function toggleMain() {
+            mainOn = !mainOn;
+            const h = document.getElementById('handle-main');
+            const b = document.getElementById('badge-main');
+            h.className = mainOn ? 'main-handle' : 'main-handle off';
+            b.textContent = mainOn ? 'ON' : 'OFF';
+            b.className = mainOn ? 'status-badge badge-on' : 'status-badge badge-off';
+            addLog(mainOn ? 'MCB Utama 3-Phase 40A: CONNECTED ✔' : 'MCB Utama: TRIP/OFF ✖ — Aliran semua subcircuit terputus.');
+            buildGrid();
+        }
+
+        function emergencyTrip() {
+            tenants.forEach(t => { t.on = false; t.tripped = true; });
+            mainOn = false;
+            const h = document.getElementById('handle-main');
+            const b = document.getElementById('badge-main');
+            h.className = 'main-handle off';
+            b.textContent = 'TRIP';
+            b.className = 'status-badge badge-trip';
+            addLog('⚡ EMERGENCY TRIP: Semua breaker OFF — sistem mati darurat!');
+            buildGrid();
+            showToast('EMERGENCY TRIP DIAKTIFKAN!', 'error');
+        }
+
+        function resetAll() {
+            tenants.forEach(t => { t.tripped = false; t.on = true; });
+            mainOn = true;
+            const h = document.getElementById('handle-main');
+            const b = document.getElementById('badge-main');
+            h.className = 'main-handle';
+            b.textContent = 'ON';
+            b.className = 'status-badge badge-on';
+            addLog('↺ RESET: Sistem panel dinormalkan kembali.');
+            buildGrid();
+            showToast('Sistem Panel Direset Normal', 'success');
+        }
+
+        function updateTotals() {
+            let total = 0;
+            tenants.forEach(t => { if (mainOn && t.on && !t.tripped) total += t.load; });
+            const maxLoad = 9200; // Batas teoritis aman
+            const pct = Math.round(total/maxLoad*100);
+            const bar = document.getElementById('main-load-bar');
+            bar.style.width = pct+'%';
+            bar.className = 'load-bar '+(pct<70?'safe':pct<90?'warn':'danger');
+            document.getElementById('main-load-pct').textContent = pct+'%';
+            document.getElementById('v-total').innerHTML = total.toLocaleString()+'<span style="font-size:9px">W</span>';
+        }
+
+        let logLines = [];
+        function addLog(msg) {
+            const now = new Date();
+            const t = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+            logLines.unshift(`[${t}] ${msg}`);
+            if (logLines.length > 10) logLines.pop();
+            const el = document.getElementById('activity-log');
+            el.innerHTML = logLines.map(l=>`<div class="log-item">${l}</div>`).join('');
+        }
+
+        // --- SIMULASI APPSHEET SCANNER ---
+        function simulateAppSheetScan(tenantId) {
+            if (!tenantId) return;
+            const t = tenants.find(x => x.id == tenantId);
+            selectedTenantForForm = t;
+
+            // Efek Suara Beep via Web Audio API
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(1200, audioCtx.currentTime); // Beep Tinggi
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 0.12);
+            } catch (e) {
+                // Browser blocks audio context initially, ignore safely
+            }
+
+            // Ganti Antarmuka ke Form AppSheet
+            document.getElementById('appsheet-scanner').classList.add('hidden');
+            document.getElementById('appsheet-form').classList.remove('hidden');
+
+            // Isi Data Form
+            document.getElementById('form-tenant-name').innerText = `${t.label} (${t.name})`;
+            document.getElementById('form-tenant-phase').innerText = `Fase ${t.phase}`;
+            document.getElementById('form-prev-kwh').innerText = t.prevKwh;
+            
+            // Generate nilai bulan ini secara logis untuk membantu simulasi pengisian
+            const estimatedKwh = t.prevKwh + Math.floor(120 + Math.random() * 80);
+            document.getElementById('form-now-kwh').value = estimatedKwh;
+            
+            calculateKwhDiff();
+            showToast(`QR Code ${t.name} Berhasil Dipindai!`, 'success');
+        }
+
+        function calculateKwhDiff() {
+            if (!selectedTenantForForm) return;
+            const prev = selectedTenantForForm.prevKwh;
+            const nowInput = parseInt(document.getElementById('form-now-kwh').value) || 0;
+            const diff = nowInput - prev;
+            
+            const diffDisplay = document.getElementById('form-diff-kwh');
+            if (diff < 0) {
+                diffDisplay.innerText = "Error: Input lebih kecil dari bulan lalu!";
+                diffDisplay.className = "text-xs font-bold text-red-600";
+            } else {
+                diffDisplay.innerText = `${diff} kWh`;
+                diffDisplay.className = "text-xs font-bold text-emerald-600";
+            }
+        }
+
+        function cancelAppSheetForm() {
+            document.getElementById('appsheet-form').classList.add('hidden');
+            document.getElementById('appsheet-scanner').classList.remove('hidden');
+            document.getElementById('tenant-select-manual').value = "";
+            selectedTenantForForm = null;
+        }
+
+        let databaseRecords = [];
+        function saveAppSheetData() {
+            if (!selectedTenantForForm) return;
+            const nowInput = parseInt(document.getElementById('form-now-kwh').value) || 0;
+            const prev = selectedTenantForForm.prevKwh;
+            const diff = nowInput - prev;
+
+            if (diff < 0) {
+                showToast('Input meteran tidak valid!', 'error');
+                return;
+            }
+
+            const now = new Date();
+            const timeStr = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+            
+            // Simpan Record
+            const record = {
+                time: timeStr,
+                tenant: selectedTenantForForm.name,
+                phase: selectedTenantForForm.phase,
+                prev: prev,
+                now: nowInput,
+                diff: diff
+            };
+            
+            databaseRecords.unshift(record);
+            if (databaseRecords.length > 5) databaseRecords.pop();
+
+            // Perbarui UI Log Database
+            const dbLog = document.getElementById('appsheet-database-log');
+            dbLog.innerHTML = databaseRecords.map(r => `
+                <div class="py-1 flex justify-between text-[9px]">
+                    <span>[${r.time}] <strong class="text-blue-400">${r.tenant}</strong> (Fase ${r.phase})</span>
+                    <span>${r.prev} ➔ ${r.now} | <strong class="text-emerald-400">+${r.diff} kWh</strong></span>
+                </div>
+            `).join('');
+
+            // Perbarui nilai database lokal tenant tersebut untuk bulan depan
+            selectedTenantForForm.prevKwh = nowInput;
+
+            showToast(`Data ${selectedTenantForForm.name} tersimpan di AppSheet Cloud Database!`, 'success');
+            cancelAppSheetForm();
+            buildGrid(); // Rebuild grid panel untuk mengupdate status
+        }
+
+
+        // --- SIMULASI 2: SMART PANTRY ---
         let pantryTimerVal = 0;
         let pantryInterval = null;
         let isPantryOccupied = false;
@@ -759,20 +1340,17 @@
             clearInterval(pantryInterval);
 
             if (occupied) {
-                // Someone is in the pantry
                 btnOn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950";
                 btnOff.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300";
                 statusTxt.innerText = "Terdeteksi Orang: Lampu & Exhaust AKTIF";
                 statusTxt.className = "text-sm font-semibold text-emerald-400";
                 timerTxt.innerText = "RUNNING";
                 
-                // Visual indicators active
                 visualLight.className = "w-16 h-16 rounded-full bg-emerald-500 border border-emerald-400 flex items-center justify-center transition-all duration-300 glow-active-green";
                 visualLight.querySelector('i').className = "fa-solid fa-lightbulb text-3xl text-white";
                 visualFan.className = "w-16 h-16 rounded-full bg-emerald-500 border border-emerald-400 flex items-center justify-center transition-all duration-300 fan-spin";
                 visualFan.querySelector('i').className = "fa-solid fa-fan text-3xl text-white";
             } else {
-                // Empty pantry: trigger cooldown/timer
                 btnOn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300";
                 btnOff.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950";
                 statusTxt.innerText = "Kosong: Menghitung Mundur untuk Mematikan Daya";
@@ -789,7 +1367,6 @@
                         statusTxt.innerText = "Sistem Padam (Energi Berhasil Dihemat)";
                         statusTxt.className = "text-sm font-semibold text-slate-500";
                         
-                        // Lights Off
                         visualLight.className = "w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center transition-all duration-300";
                         visualLight.querySelector('i').className = "fa-solid fa-lightbulb text-3xl text-slate-500";
                         visualFan.className = "w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center transition-all duration-300";
@@ -801,13 +1378,13 @@
             }
         }
 
-        // --- SIMULASI 2: PANEL INTEGRASI FIRE & SAFETY ---
-        let isManualMode = true; // Mode default dari start adalah MANUAL
+        // --- SIMULASI 3: PANEL INTEGRASI FIRE & SAFETY ---
+        let isManualMode = true;
         let isDrillActive = false;
         let drillTimeout = null;
 
         function toggleModeSwitch() {
-            if (isDrillActive) return; // Kunci switch saat pengetesan darurat aktif
+            if (isDrillActive) return;
 
             isManualMode = !isManualMode;
             const rotary = document.getElementById('rotary-switch');
@@ -832,13 +1409,12 @@
         }
 
         function pressDrillButton() {
-            if (isDrillActive) return; // Cegah klik berulang saat simulasi jalan
+            if (isDrillActive) return;
 
             const drillLight = document.getElementById('drill-indicator-light');
             const line1 = document.getElementById('lcd-line1');
             const line2 = document.getElementById('lcd-line2');
             
-            // Output elements status
             const statusAlarm = document.getElementById('status-alarm');
             const ledAlarm = document.getElementById('led-status-alarm');
             const statusGate = document.getElementById('status-gate');
@@ -851,43 +1427,35 @@
             isDrillActive = true;
             drillLight.className = "w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse mt-1";
             
-            // Perbarui layar LCD
             line1.innerText = "* DRILL TRIGGER *";
             line2.innerText = "EVACUATION MODE ";
 
-            // Jalankan urutan penyalaan integrasi 
-            // 1. Alarm Berbunyi
             statusAlarm.innerText = "🚨 AKTIF";
             statusAlarm.className = "text-xs font-bold text-red-600 animate-pulse";
             ledAlarm.className = "w-3.5 h-3.5 rounded-full bg-red-500 glow-active-red";
 
-            // 2. Gate Terbuka (Fail-safe)
             setTimeout(() => {
                 statusGate.innerText = "🔓 TERBUKA";
                 statusGate.className = "text-xs font-bold text-emerald-600";
                 ledGate.className = "w-3.5 h-3.5 rounded-full bg-emerald-500 glow-active-green";
             }, 1000);
 
-            // 3. Lift Kembali ke Ground Floor (Lantai 1)
             setTimeout(() => {
                 statusLift.innerText = "🛗 HOMING GF";
                 statusLift.className = "text-xs font-bold text-amber-600";
                 ledLift.className = "w-3.5 h-3.5 rounded-full bg-amber-500";
             }, 2000);
 
-            // 4. Fresh Air Fan Aktif (Sirkulasi udara)
             setTimeout(() => {
                 statusFaf.innerText = "🌀 BERPUTAR";
                 statusFaf.className = "text-xs font-bold text-emerald-600";
                 ledFaf.className = "w-3.5 h-3.5 rounded-full bg-emerald-500 glow-active-green";
             }, 3000);
 
-            // Reset Simulasi Otomatis setelah 10 Detik
             drillTimeout = setTimeout(() => {
                 isDrillActive = false;
                 drillLight.className = "w-1.5 h-1.5 rounded-full bg-slate-400 mt-1";
                 
-                // Kembalikan ke normal
                 statusAlarm.innerText = "STANDBY";
                 statusAlarm.className = "text-xs font-bold text-slate-700";
                 ledAlarm.className = "w-3.5 h-3.5 rounded-full bg-slate-400";
@@ -904,15 +1472,14 @@
                 statusFaf.className = "text-xs font-bold text-slate-700";
                 ledFaf.className = "w-3.5 h-3.5 rounded-full bg-slate-400";
 
-                // Refresh LCD sesuai mode asal
                 toggleModeSwitch(); 
                 toggleModeSwitch();
             }, 10000);
         }
 
-        // --- SIMULASI 3: INTERFACE AHU ---
+        // --- SIMULASI 4: INTERFACE AHU ---
         let ahuStates = { 1: false, 2: false, 3: false };
-        const floorPowers = { 1: 15, 2: 18, 3: 22 }; // Beban daya per AHU lantai dlm kW
+        const floorPowers = { 1: 15, 2: 18, 3: 22 };
 
         function toggleFloorAhu(floor) {
             ahuStates[floor] = !ahuStates[floor];
@@ -933,7 +1500,6 @@
                 const tempText = document.getElementById('ahu-temp-' + floor);
                 
                 if (ahuStates[floor]) {
-                    // AHU ON
                     btn.className = "w-14 h-7 rounded-full bg-emerald-500 p-1 transition-all duration-300 relative";
                     circle.style.transform = "translateX(28px)";
                     circle.className = "w-5 h-5 rounded-full bg-white absolute left-1 top-1 transition-all";
@@ -941,7 +1507,6 @@
                     tempText.className = "text-xs font-mono text-emerald-400 font-semibold";
                     totalPower += floorPowers[floor];
                 } else {
-                    // AHU OFF
                     btn.className = "w-14 h-7 rounded-full bg-slate-800 p-1 transition-all duration-300 relative";
                     circle.style.transform = "translateX(0px)";
                     circle.className = "w-5 h-5 rounded-full bg-slate-400 absolute left-1 top-1 transition-all";
@@ -953,9 +1518,9 @@
             document.getElementById('ahu-total-load').innerText = totalPower + " kW";
         }
 
-        // --- SIMULASI 4: SECURITY CORRIDOR SENSOR ---
-        let currentSecurityHour = 22; // Jam malam default
-        let isSecurityArmed = true;   // Di atas 21.00 armed
+        // --- SIMULASI 5: SECURITY CORRIDOR SENSOR ---
+        let currentSecurityHour = 22;
+        let isSecurityArmed = true;   
         let securityIntrusionActive = false;
         let securityResetTimeout = null;
 
@@ -964,11 +1529,9 @@
             const clockText = document.getElementById('security-clock');
             const armedBadge = document.getElementById('security-armed-badge');
             
-            // Format jam tampilan
             let formattedHour = currentSecurityHour < 10 ? '0' + currentSecurityHour : currentSecurityHour;
             clockText.innerText = formattedHour + ':00';
 
-            // Logika Timer: Aktif jika jam >= 21 ATAU jam < 5
             if (currentSecurityHour >= 21 || currentSecurityHour < 5) {
                 isSecurityArmed = true;
                 armedBadge.innerText = 'ARMED (AKTIF)';
@@ -977,7 +1540,7 @@
                 isSecurityArmed = false;
                 armedBadge.innerText = 'DISARMED (MATI)';
                 armedBadge.className = 'px-3 py-1 rounded text-xs font-extrabold bg-slate-800 text-slate-500';
-                resetSecurityAlarm(); // Reset alarm otomatis jika ditiadakan pada jam siang
+                resetSecurityAlarm(); 
             }
         }
 
@@ -989,7 +1552,6 @@
             const overlay = document.getElementById('intrusion-bg-overlay');
 
             if (!isSecurityArmed) {
-                // Jam Kerja Normal - Abaikan
                 statusMsg.innerText = `Gerakan Terdeteksi di Jam Kerja (${currentSecurityHour}:00). Tenant Masih Aktif. Sinyal Diabaikan.`;
                 statusMsg.className = "text-sm font-semibold text-amber-400";
                 
@@ -1005,7 +1567,6 @@
                 return;
             }
 
-            // Jam Malam - INTRUSION ALARM ACTIVE
             securityIntrusionActive = true;
             statusMsg.innerText = `🚨 ADANYA PENYUSUP! Gerakan terdeteksi di Koridor Lantai 2 pada pukul ${currentSecurityHour}:00!`;
             statusMsg.className = "text-sm font-bold text-red-500 animate-pulse";
@@ -1015,7 +1576,6 @@
             
             overlay.className = "absolute inset-0 bg-red-500/15 transition-all duration-300 pointer-events-none";
 
-            // Reset otomatis alarm setelah 7 detik
             securityResetTimeout = setTimeout(() => {
                 resetSecurityAlarm();
             }, 7000);
@@ -1038,12 +1598,27 @@
             overlay.className = "absolute inset-0 bg-red-500/0 transition-all duration-300 pointer-events-none";
         }
 
-        // Salin Tautan / Clipboard (Using document.execCommand fallback)
+        // Clipboard Copy System
         function copyPortfolioLink() {
             const btnText = document.getElementById('btn-copy-text');
+            const copyUrl = window.location.href;
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(copyUrl)
+                    .then(() => {
+                        btnText.innerHTML = '<i class="fa-solid fa-check mr-1.5 text-emerald-400"></i> Berhasil Disalin!';
+                        setTimeout(() => {
+                            btnText.innerHTML = '<i class="fa-solid fa-link mr-1.5"></i> Salin Tautan Website Portofolio Ini';
+                        }, 3000);
+                    })
+                    .catch(() => copyFallback(copyUrl, btnText));
+            } else {
+                copyFallback(copyUrl, btnText);
+            }
+        }
+
+        function copyFallback(text, btnText) {
             const dummy = document.createElement('input');
-            const text = window.location.href;
-            
             document.body.appendChild(dummy);
             dummy.value = text;
             dummy.select();
@@ -1058,9 +1633,26 @@
 
         // Initialize default states on load
         window.onload = function() {
+            // Panel JTV Lt. 3 Init
+            buildGrid();
+            addLog('Sistem panel 3-Phase JTV Lt. 3 diinisialisasi — Siap operasi.');
+
+            // Live Voltage fluctuations to make it realistic
+            setInterval(() => {
+                if (!mainOn) return;
+                document.getElementById('v-r').innerHTML = (226 + Math.floor(Math.random() * 6)) + '<span style="font-size:9px">V</span>';
+                document.getElementById('v-s').innerHTML = (228 + Math.floor(Math.random() * 6)) + '<span style="font-size:9px">V</span>';
+                document.getElementById('v-t').innerHTML = (227 + Math.floor(Math.random() * 6)) + '<span style="font-size:9px">V</span>';
+            }, 3000);
+
+            // Pantry Init
             setPantryState(false);
+
+            // AHU Init
             updateAhuUi();
-            updateSecurityTime(22); // Mulai pada jam 10 malam
+
+            // Security Init
+            updateSecurityTime(22);
         };
     </script>
 </body>
