@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahyu Bambang S. - Portofolio Otomatisasi & Engineering</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .mono-font {
+            font-family: 'Share Tech Mono', monospace;
+        }
+        /* Custom Glowing Animations */
+        @keyframes pulse-glow-green {
+            0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); filter: brightness(1); }
+            50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.9); filter: brightness(1.3); }
+        }
+        @keyframes pulse-glow-red {
+            0%, 100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.5); filter: brightness(1); }
+            50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.9); filter: brightness(1.3); }
+        }
+        @keyframes pulse-glow-amber {
+            0%, 100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); filter: brightness(1); }
+            50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.9); filter: brightness(1.3); }
+        }
+        .glow-active-green {
+            animation: pulse-glow-green 1.5s infinite;
+        }
+        .glow-active-red {
+            animation: pulse-glow-red 1s infinite;
+        }
+        .glow-active-amber {
+            animation: pulse-glow-amber 1.2s infinite;
+        }
+        .fan-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-900 scroll-smooth">
+
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-900 font-bold text-xl shadow-lg shadow-emerald-500/20">
+                        BS
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-wider text-white">WAHYU BAMBANG S.</span>
+                        <p class="text-xs text-emerald-400 font-medium">Automation & Building Controls</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#about" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Profil</a>
+                    <a href="#projects" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Alat & Inovasi</a>
+                    <a href="#simulation" class="text-slate-300 hover:text-emerald-400 text-sm font-medium transition-colors">Simulasi Interaktif</a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-sm font-semibold transition-all shadow-md shadow-emerald-500/10">Hubungi Saya</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <a href="#simulation" class="px-3 py-1.5 text-xs rounded-md bg-emerald-500 text-slate-950 font-semibold shadow-md">Coba Simulasi</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Header Section -->
+    <header class="relative py-20 overflow-hidden border-b border-slate-900">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(16,185,129,0.08),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Siap Membawa Solusi Otomatisasi Baru
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none">
+                        Mengubah Logika Menjadi <span class="text-emerald-400">Efisiensi & Keamanan</span> Gedung.
+                    </h1>
+                    <p class="text-slate-400 text-lg sm:text-xl max-w-2xl font-light leading-relaxed">
+                        Halo, saya Bambang. Seorang praktisi <strong class="text-slate-200">Engineering & Building Automation</strong>. Saya merancang, memprogram, dan merakit sistem kontrol terintegrasi untuk menghemat energi, mengotomatisasi HVAC, mengoptimalkan keamanan koridor malam, dan menjaga keselamatan gedung bertingkat.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#simulation" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+                            <i class="fa-solid fa-gamepad"></i> Mainkan Demo Sistem
+                        </a>
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-semibold transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> Lihat 4 Proyek Utama
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative">
+                    <!-- Tech visual feature -->
+                    <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-3 text-xs font-mono text-emerald-500/30">ID_BAMS_SYS_02</div>
+                        <h3 class="text-sm font-semibold text-emerald-400 tracking-wider uppercase mb-4">Kompetensi Utama</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
+                                <span class="text-slate-300"><i class="fa-solid fa-microchip text-emerald-400 mr-2"></i>Microcontroller/PLC Program</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Expert</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
+                                <span class="text-slate-300"><i class="fa-solid fa-network-wired text-emerald-400 mr-2"></i>System Integration (Fire/Gate/Lift/Security)</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Implemented</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
+                                <span class="text-slate-300"><i class="fa-solid fa-fan text-emerald-400 mr-2"></i>AHU & HVAC Control Design</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">95% Efficiency</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-950/40 border border-slate-800/50">
+                                <span class="text-slate-300"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2"></i>Intrusion Detection & Safety Alarms</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Cards Section -->
+    <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">4 Inovasi Otomatisasi Utama</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">Solusi riil yang dirancang dan dipasang langsung di gedung bertingkat untuk optimasi biaya, kemudahan operasi, dan proteksi maksimal.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Project 1: Motion Detector Pantry -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
+                        <i class="fa-solid fa-bolt-lightning text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Smart Motion Detector Pantry</h3>
+                    <p class="text-sm text-emerald-400 font-medium mb-4">Sistem Penghemat Energi Listrik</p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Mengatasi pemborosan listrik akibat lampu dan exhaust fan pantry yang terus menyala seharian tanpa pengguna. Menggunakan sensor gerak pintar untuk memutus dan menyambung aliran listrik secara otomatis dengan sistem timer pengaman.
+                    </p>
+                </div>
+                <div class="border-t border-slate-800 pt-4 mt-4 space-y-2">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Efisiensi Listrik:</span>
+                        <span class="font-bold text-emerald-400">Hingga 40% / Pantry</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Teknologi:</span>
+                        <span class="font-semibold text-slate-200">PIR Sensor, Relay Array, Timer Logic</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Fire Integration Control Panel -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 h-32 w-32 bg-emerald-500/5 rounded-full blur-2xl"></div>
+                <div>
+                    <div class="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
+                        <i class="fa-solid fa-fire-extinguisher text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Integrated Fire & Safety Command Panel</h3>
+                    <p class="text-sm text-emerald-400 font-medium mb-4">Sistem Integrasi Penyelamatan Gedung</p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Menyatukan Master Fire Alarm (MCFA), sistem pembatas gerbang (B. Gate), sirkulasi udara (Fresh Air Fan), dan lift/elevator (Kone) ke dalam satu panel kontrol terintegrasi berbasis mikrokontroler. Memastikan sistem evakuasi langsung aktif secara otomatis saat kebakaran dipicu.
+                    </p>
+                </div>
+                <div class="border-t border-slate-800 pt-4 mt-4 space-y-2">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Waktu Respon Evakuasi:</span>
+                        <span class="font-bold text-emerald-400">Seketika (&lt; 1 Detik)</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Teknologi:</span>
+                        <span class="font-semibold text-slate-200">Microcontroller, HMI LCD 16x2, Relay Matrix</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: AHU Interface Control -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
+                        <i class="fa-solid fa-wind text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Smart AHU Interface Control</h3>
+                    <p class="text-sm text-emerald-400 font-medium mb-4">HMI & Kontrol Sentral Penyejuk Udara</p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Sistem kontrol dan antarmuka untuk memantau serta menyalakan/mematikan Air Handling Unit (AHU) secara efisien dan terpusat di gedung bertingkat. Memudahkan manajemen operasional harian teknisi dan mencegah lonjakan konsumsi listrik secara berlebihan saat start-up.
+                    </p>
+                </div>
+                <div class="border-t border-slate-800 pt-4 mt-4 space-y-2">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Waktu Kontrol Teknisi:</span>
+                        <span class="font-bold text-emerald-400">Pangkas Hingga 85% Waktu</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Teknologi:</span>
+                        <span class="font-semibold text-slate-200">Centralized Interface, Smart Overload Protection</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Night Security Corridor Motion Alarm -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 h-32 w-32 bg-emerald-500/5 rounded-full blur-2xl"></div>
+                <div>
+                    <div class="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
+                        <i class="fa-solid fa-user-shield text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Night Corridor Security Motion Alarm</h3>
+                    <p class="text-sm text-emerald-400 font-medium mb-4">Sistem Pengawasan Patroli Malam Otomatis</p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Sistem proteksi koridor tenant malam hari menggunakan sensor gerak terintegrasi. Sistem otomatis menyala (*armed*) via timer jam malam (21.00 - 05.00) saat tenant kosong. Jika ada gerakan mencurigakan, sistem mengirimkan sinyal bahaya ke pos sekuriti secara real-time.
+                    </p>
+                </div>
+                <div class="border-t border-slate-800 pt-4 mt-4 space-y-2">
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Waktu Operasional Timer:</span>
+                        <span class="font-bold text-emerald-400">Pukul 21.00 - 05.00</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-400">
+                        <span>Teknologi:</span>
+                        <span class="font-semibold text-slate-200">RTC Timer, PIR Sensor, Security Console Alarm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Simulation Hub -->
+    <section id="simulation" class="py-20 bg-slate-900/50 border-t border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-3 mb-12">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">Laboratorium Simulasi</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Coba & Operasikan Alatnya Di Sini</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Silakan pilih dan jalankan panel virtual di bawah ini untuk melihat bagaimana sistem otomatisasi saya menyelesaikan masalah riil secara real-time.</p>
+            </div>
+
+            <!-- Simulation Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="switchTab('sim-pantry')" id="btn-sim-pantry" class="tab-btn px-5 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> 1. Smart Pantry Saving
+                </button>
+                <button onclick="switchTab('sim-fire')" id="btn-sim-fire" class="tab-btn px-5 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-fire"></i> 2. Panel Integrasi Fire & Safety
+                </button>
+                <button onclick="switchTab('sim-ahu')" id="btn-sim-ahu" class="tab-btn px-5 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-fan"></i> 3. Interface Monitor AHU
+                </button>
+                <button onclick="switchTab('sim-security')" id="btn-sim-security" class="tab-btn px-5 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield"></i> 4. Night Security Alarm
+                </button>
+            </div>
+
+            <!-- TAB 1: SMART PANTRY SIMULATION -->
+            <div id="sim-pantry" class="tab-content block">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Simulasi Deteksi Gerak Pantry</h3>
+                            <p class="text-sm text-slate-400 mb-6">Sistem ini mematikan perangkat listrik (Lampu & Exhaust) 5 detik setelah tidak ada aktivitas orang di pantry.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3 bg-slate-950 rounded-xl border border-slate-800">
+                                    <span class="text-sm text-slate-300">Status Keberadaan Orang:</span>
+                                    <div class="flex gap-2">
+                                        <button onclick="setPantryState(true)" id="btn-pantry-on" class="px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950">Ada Orang</button>
+                                        <button onclick="setPantryState(false)" id="btn-pantry-off" class="px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300">Kosong</button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3 bg-slate-950 rounded-xl border border-slate-800">
+                                    <span class="text-sm text-slate-300">Timer Hitung Mundur Off:</span>
+                                    <span id="pantry-timer" class="text-xl font-bold text-emerald-400 mono-font">0s</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Real-time metrics -->
+                        <div class="mt-8 border-t border-slate-800 pt-6 space-y-3">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Kalkulator Penghematan Riil (1 Pantry)</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-850">
+                                    <p class="text-[10px] text-slate-400 uppercase font-medium">Biaya Terhemat</p>
+                                    <p id="calc-rupiah" class="text-lg font-extrabold text-emerald-400 mt-1">Rp 1.250.000 / Th</p>
+                                </div>
+                                <div class="bg-slate-950 p-3 rounded-xl border border-slate-850">
+                                    <p class="text-[10px] text-slate-400 uppercase font-medium">Daya Terhemat</p>
+                                    <p id="calc-kwh" class="text-lg font-extrabold text-emerald-400 mt-1">862 kWh / Th</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Representation -->
+                    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-8 rounded-2xl flex flex-col justify-center items-center relative overflow-hidden min-h-[350px]">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.03),transparent_60%)]"></div>
+                        
+                        <div class="relative z-10 w-full max-w-md text-center space-y-8">
+                            <!-- Pantry Lights and Fan Visual -->
+                            <div class="flex justify-around items-center gap-6">
+                                <div class="space-y-2">
+                                    <div id="visual-light" class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center transition-all duration-300">
+                                        <i class="fa-solid fa-lightbulb text-3xl text-slate-500"></i>
+                                    </div>
+                                    <p class="text-xs text-slate-400 font-medium">Lampu Pantry</p>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <div id="visual-fan" class="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center transition-all duration-300">
+                                        <i class="fa-solid fa-fan text-3xl text-slate-500"></i>
+                                    </div>
+                                    <p class="text-xs text-slate-400 font-medium">Exhaust Fan</p>
+                                </div>
+                            </div>
+
+                            <!-- Screen Message -->
+                            <div class="p-4 bg-slate-950 rounded-xl border border-slate-800/60 max-w-xs mx-auto">
+                                <p class="text-xs font-mono text-slate-400 mb-1">Status Sensor Gerak</p>
+                                <p id="pantry-status-txt" class="text-sm font-semibold text-slate-400">Menunggu Deteksi...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: FIRE INTEGRATION CONTROL PANEL (DARI FOTO) -->
+            <div id="sim-fire" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <!-- Left Column: Guide -->
+                    <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Berdasarkan Sistem Asli di Foto
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Simulasi Panel Integrasi</h3>
+                            <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                                Silakan gunakan panel simulasi di sebelah kanan. Panel ini menduplikasi fungsi dari panel fisik yang saya rakit. 
+                            </p>
+
+                            <div class="space-y-4">
+                                <div class="border-l-2 border-emerald-500 pl-4 py-1">
+                                    <h4 class="text-sm font-bold text-white">Langkah 1: Mode Operasi</h4>
+                                    <p class="text-xs text-slate-400">Klik sakelar pemutar hitam untuk memindahkan mode dari **MANUAL** ke **AUTO** (atau sebaliknya).</p>
+                                </div>
+                                <div class="border-l-2 border-emerald-500 pl-4 py-1">
+                                    <h4 class="text-sm font-bold text-white">Langkah 2: Uji Coba Evakuasi</h4>
+                                    <p class="text-xs text-slate-400">Dalam mode **AUTO**, tekan tombol **DRILL** berwarna biru di bagian atas untuk mensimulasikan kepanikan darurat kebakaran.</p>
+                                </div>
+                                <div class="border-l-2 border-emerald-500 pl-4 py-1">
+                                    <h4 class="text-sm font-bold text-white">Langkah 3: Perhatikan Perubahan Status</h4>
+                                    <p class="text-xs text-slate-400">Layar LCD akan berganti pesan, sirine akan berbunyi, Barrier Gate membuka otomatis, dan Lift Kone dipaksa turun ke Ground Floor (Lantai 1) dengan aman.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-slate-400">Protokol Keamanan:</span>
+                            <span class="text-xs font-bold text-emerald-400 flex items-center gap-1">
+                                <i class="fa-solid fa-shield-halved"></i> 100% Fail-Safe Active
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Digital Twin of the Beige Panel -->
+                    <div class="lg:col-span-7 flex justify-center items-center p-4">
+                        <!-- Beige Panel Frame -->
+                        <div class="w-full max-w-sm bg-[#e2dec9] text-slate-900 border-4 border-slate-400 rounded-3xl p-6 shadow-2xl relative select-none">
+                            <div class="absolute inset-x-0 top-0 h-4 bg-white/20 rounded-t-2xl"></div>
+
+                            <!-- Header: Drill Button & Screen -->
+                            <div class="flex flex-col items-center gap-4 mb-6">
+                                <!-- Drill Section -->
+                                <div class="flex flex-col items-center">
+                                    <span class="text-[10px] font-bold tracking-widest text-slate-600 bg-white/40 px-2 py-0.5 rounded border border-slate-400/50">DRILL</span>
+                                    <button onclick="pressDrillButton()" class="mt-1 h-10 w-10 rounded-full bg-blue-900 border-2 border-slate-500 hover:bg-blue-850 active:scale-90 transition-all shadow-md flex items-center justify-center cursor-pointer">
+                                        <span class="w-3.5 h-3.5 rounded-full bg-blue-500"></span>
+                                    </button>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1" id="drill-indicator-light"></span>
+                                </div>
+
+                                <!-- Backlit 16x2 LCD Display -->
+                                <div class="w-full bg-blue-900 text-cyan-200 border-2 border-slate-700 p-2 rounded shadow-inner flex flex-col items-center justify-center min-h-[55px] select-none text-center">
+                                    <p id="lcd-line1" class="mono-font text-xs tracking-wider font-semibold select-none">* PUSH 'DRILL' *</p>
+                                    <p id="lcd-line2" class="mono-font text-xs tracking-wider font-semibold select-none">* BUTTON   *</p>
+                                </div>
+                            </div>
+
+                            <!-- Mode Section (Auto/Manual Select) -->
+                            <div class="grid grid-cols-2 gap-4 mb-6 items-center">
+                                <!-- AUTO Indicator -->
+                                <div class="flex flex-col items-center">
+                                    <span class="text-[9px] font-bold text-slate-600 bg-white/30 px-1 py-0.5 rounded border border-slate-400/40">AUTO</span>
+                                    <div id="led-auto" class="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-900 mt-2 transition-all"></div>
+                                </div>
+                                <!-- MANUAL Indicator -->
+                                <div class="flex flex-col items-center">
+                                    <span class="text-[9px] font-bold text-slate-600 bg-white/30 px-1 py-0.5 rounded border border-slate-400/40">MANUAL</span>
+                                    <div id="led-manual" class="w-5 h-5 rounded-full bg-emerald-500 border border-emerald-300 mt-2 transition-all glow-active-green"></div>
+                                </div>
+
+                                <!-- Key & Switch (Simulated with rotating selector) -->
+                                <div class="col-span-2 flex justify-center items-center gap-8 py-2">
+                                    <!-- Selector Switch -->
+                                    <div class="flex flex-col items-center">
+                                        <div onclick="toggleModeSwitch()" class="w-14 h-14 rounded-full bg-slate-800 border-2 border-slate-600 relative flex items-center justify-center cursor-pointer transition-transform duration-300 shadow-md" id="rotary-switch">
+                                            <!-- Pointer -->
+                                            <div class="w-2 h-10 bg-white rounded-full absolute -top-1" style="transform-origin: center 15px;"></div>
+                                        </div>
+                                        <span class="text-[9px] font-bold text-slate-600 mt-1.5">AUTO / MANUAL</span>
+                                    </div>
+
+                                    <!-- Key Switch (Sound Alarm Lock) -->
+                                    <div class="flex flex-col items-center">
+                                        <div class="relative w-12 h-12 bg-zinc-400 border-2 border-zinc-600 rounded-full flex items-center justify-center">
+                                            <i class="fa-solid fa-key text-slate-800 text-lg"></i>
+                                        </div>
+                                        <span class="text-[9px] font-bold text-slate-600 mt-1.5">SOUND ALARM</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Integrated Systems Feedbacks -->
+                            <div class="border-t border-slate-400/55 pt-4">
+                                <p class="text-[10px] font-bold text-slate-700 text-center mb-3 tracking-wider">OUTPUT SYSTEM INTEGRATION</p>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <!-- Sound Alarm -->
+                                    <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
+                                        <div>
+                                            <p class="text-[9px] font-bold text-slate-600">SOUND ALARM</p>
+                                            <p id="status-alarm" class="text-xs font-bold text-red-700">STANDBY</p>
+                                        </div>
+                                        <div id="led-status-alarm" class="w-3.5 h-3.5 rounded-full bg-slate-400"></div>
+                                    </div>
+
+                                    <!-- Barrier Gate -->
+                                    <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
+                                        <div>
+                                            <p class="text-[9px] font-bold text-slate-600">B. GATE (PINTU)</p>
+                                            <p id="status-gate" class="text-xs font-bold text-slate-700">TERKUNCI</p>
+                                        </div>
+                                        <div id="led-status-gate" class="w-3.5 h-3.5 rounded-full bg-slate-400"></div>
+                                    </div>
+
+                                    <!-- Lift Kone -->
+                                    <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
+                                        <div>
+                                            <p class="text-[9px] font-bold text-slate-600">LIFT KONE</p>
+                                            <p id="status-lift" class="text-xs font-bold text-slate-700">NORMAL RUN</p>
+                                        </div>
+                                        <div id="led-status-lift" class="w-3.5 h-3.5 rounded-full bg-slate-400"></div>
+                                    </div>
+
+                                    <!-- Fresh Air Fan -->
+                                    <div class="bg-white/40 border border-slate-400 p-2 rounded-lg flex items-center justify-between">
+                                        <div>
+                                            <p class="text-[9px] font-bold text-slate-600">FRESH AIR FAN</p>
+                                            <p id="status-faf" class="text-xs font-bold text-slate-700">MATI</p>
+                                        </div>
+                                        <div id="led-status-faf" class="w-3.5 h-3.5 rounded-full bg-slate-400"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Panel Branding Logo -->
+                            <div class="mt-4 flex justify-between items-end">
+                                <span class="text-[8px] text-slate-500">REV: 2.1</span>
+                                <span class="mono-font font-bold tracking-widest text-slate-700 italic border-b border-slate-500">umG Controls</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: AHU SYSTEM INTERFACE -->
+            <div id="sim-ahu" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <!-- Control Side -->
+                    <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Interface Pengaturan AHU</h3>
+                            <p class="text-sm text-slate-400 mb-6">Manajemen sentralisasi daya untuk mencegah kelebihan beban listrik (*overload*) saat start-up unit AC.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3 bg-slate-950 rounded-xl border border-slate-800">
+                                    <span class="text-sm text-slate-300">Total Konsumsi Beban AHU:</span>
+                                    <span id="ahu-total-load" class="text-lg font-bold text-emerald-400 mono-font">0 kW</span>
+                                </div>
+
+                                <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Kontrol Cepat Semua Lantai</p>
+                                    <div class="flex gap-2">
+                                        <button onclick="toggleAllAhu(true)" class="flex-1 py-2 rounded bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs transition-all">AKTIFKAN SEMUA</button>
+                                        <button onclick="toggleAllAhu(false)" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-all">MATIKAN SEMUA</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 space-y-2">
+                            <p class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Proteksi Arus Kejut Aktif</p>
+                            <p class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Hemat Daya Start-up s.d 20%</p>
+                        </div>
+                    </div>
+
+                    <!-- Interface Side -->
+                    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                            <!-- Dashboard Header -->
+                            <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                                <span class="text-xs font-bold text-emerald-400 font-mono tracking-wider"><i class="fa-solid fa-sliders"></i> AHU CORE MANAGEMENT</span>
+                                <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            </div>
+
+                            <!-- Floors AHU Controls -->
+                            <div class="divide-y divide-slate-900">
+                                <!-- Floor 3 -->
+                                <div class="p-4 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-bold text-white">AHU LANTAI 3</p>
+                                        <p class="text-xs text-slate-400">Server & Office Room</p>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <span id="ahu-temp-3" class="text-xs font-mono text-slate-400">Temp: 24°C</span>
+                                        <button onclick="toggleFloorAhu(3)" id="btn-ahu-3" class="w-14 h-7 rounded-full bg-slate-800 p-1 transition-all duration-300 relative">
+                                            <span class="w-5 h-5 rounded-full bg-slate-400 absolute left-1 top-1 transition-all" id="toggle-circle-3"></span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Floor 2 -->
+                                <div class="p-4 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-bold text-white">AHU LANTAI 2</p>
+                                        <p class="text-xs text-slate-400">Main Conference Hall</p>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <span id="ahu-temp-2" class="text-xs font-mono text-slate-400">Temp: 23°C</span>
+                                        <button onclick="toggleFloorAhu(2)" id="btn-ahu-2" class="w-14 h-7 rounded-full bg-slate-800 p-1 transition-all duration-300 relative">
+                                            <span class="w-5 h-5 rounded-full bg-slate-400 absolute left-1 top-1 transition-all" id="toggle-circle-2"></span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Floor 1 -->
+                                <div class="p-4 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-bold text-white">AHU LANTAI 1</p>
+                                        <p class="text-xs text-slate-400">Lobby & Executive Area</p>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <span id="ahu-temp-1" class="text-xs font-mono text-slate-400">Temp: 22°C</span>
+                                        <button onclick="toggleFloorAhu(1)" id="btn-ahu-1" class="w-14 h-7 rounded-full bg-slate-800 p-1 transition-all duration-300 relative">
+                                            <span class="w-5 h-5 rounded-full bg-slate-400 absolute left-1 top-1 transition-all" id="toggle-circle-1"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: NIGHT SECURITY CORRIDOR ALARM -->
+            <div id="sim-security" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <!-- Control Settings Panel -->
+                    <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 tracking-wider border border-emerald-500/20 uppercase">MODUL SECURITY</span>
+                            <h3 class="text-xl font-bold text-white mt-2 mb-2">Simulasi Pengawasan Koridor</h3>
+                            <p class="text-sm text-slate-400 mb-6 leading-relaxed">Sistem ini bekerja otomatis dengan pengatur waktu. Di luar jam operasional (21:00 - 05:00), sensor PIR aktif mendeteksi penyusup malam hari.</p>
+                            
+                            <!-- Clock Slider & Settings -->
+                            <div class="space-y-5 bg-slate-950 p-4 rounded-xl border border-slate-850">
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-xs text-slate-400 font-bold">WAKTU SIMULASI (REALTIME):</span>
+                                        <span id="security-clock" class="text-sm font-bold text-emerald-400 mono-font">22:00</span>
+                                    </div>
+                                    <input type="range" min="0" max="23" value="22" id="security-time-slider" oninput="updateSecurityTime(this.value)" class="w-full accent-emerald-500 bg-slate-800 h-1.5 rounded-lg appearance-none cursor-pointer">
+                                    <div class="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                                        <span>00:00</span>
+                                        <span class="text-amber-500">05:00 (Mati)</span>
+                                        <span>12:00</span>
+                                        <span class="text-amber-500">21:00 (Aktif)</span>
+                                        <span>23:59</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-between items-center pt-2 border-t border-slate-900">
+                                    <span class="text-xs font-semibold text-slate-300">Status Modul Sensor:</span>
+                                    <span id="security-armed-badge" class="px-3 py-1 rounded text-xs font-extrabold bg-emerald-500/20 text-emerald-400 glow-active-green">ARMED (AKTIF)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="mt-8 space-y-3">
+                            <button onclick="triggerSecurityMotion()" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-person-walking"></i> Simulasikan Gerakan Tenant
+                            </button>
+                            <button onclick="resetSecurityAlarm()" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-all flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-rotate-left"></i> Reset Alarm Security
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Desk Display -->
+                    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden min-h-[380px]">
+                        <!-- Background glow overlay for intrusion alarm -->
+                        <div id="intrusion-bg-overlay" class="absolute inset-0 bg-red-500/0 transition-all duration-300 pointer-events-none"></div>
+                        
+                        <!-- Top Bar of Security Monitor -->
+                        <div class="relative z-10 flex justify-between items-center border-b border-slate-800 pb-3">
+                            <span class="text-xs font-mono text-slate-400"><i class="fa-solid fa-tv"></i> MONITOR POS SECURITY</span>
+                            <div class="flex items-center gap-2">
+                                <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="text-[10px] font-mono text-emerald-400">ONLINE</span>
+                            </div>
+                        </div>
+
+                        <!-- Main Screen Graphic -->
+                        <div class="relative z-10 my-6 flex flex-col items-center justify-center text-center py-6">
+                            <!-- Visual Corridor Icon Status -->
+                            <div id="security-screen-icon" class="w-24 h-24 rounded-full bg-slate-950 border-2 border-slate-800 flex items-center justify-center text-slate-400 mb-6 transition-all duration-300">
+                                <i class="fa-solid fa-shield-halved text-4xl"></i>
+                            </div>
+
+                            <!-- Big Warn Message on Guard Screen -->
+                            <div class="p-4 bg-slate-950/80 rounded-xl border border-slate-800/80 max-w-md w-full">
+                                <p class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Status Log Corridor B (Lantai 2)</p>
+                                <p id="security-status-msg" class="text-sm font-semibold text-emerald-400">Kondisi Aman - Tidak Ada Gerakan</p>
+                            </div>
+                        </div>
+
+                        <!-- Guard Warning Buzzer Box -->
+                        <div class="relative z-10 border-t border-slate-800 pt-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+                            <span class="text-slate-400 text-center sm:text-left">Instalasi: Koridor Tenant lantai 2 - Terkoneksi ke Router Pos Depan</span>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-1 rounded bg-slate-950 border border-slate-850 text-[10px] text-slate-400">TIMER: Auto 21.00-05.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Professional Profile Section -->
+    <section id="about" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <h2 class="text-3xl font-extrabold text-white">Mengenai Saya</h2>
+        <div class="p-8 bg-slate-900 border border-slate-800 rounded-3xl relative space-y-6">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-12 rounded-xl bg-emerald-500 flex items-center justify-center text-slate-950 font-bold text-xl">
+                B
+            </div>
+            <p class="text-slate-300 text-lg leading-relaxed pt-4">
+                "Saya berkomitmen untuk meningkatkan efisiensi dan keandalan sistem gedung melalui inovasi teknologi yang relevan dan tepat guna. Pengalaman langsung dalam merancang kelistrikan, memprogram sistem, dan mengintegrasikannya di lapangan menjadi bekal saya untuk mengawal tantangan teknik di level yang lebih tinggi."
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-left pt-4">
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-850">
+                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Lokasi</p>
+                    <p class="text-sm font-bold text-white mt-1"> Surabaya </p>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-850">
+                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Kandidat</p>
+                    <p class="text-sm font-bold text-white mt-1">Engineering Supervisor</p>
+                </div>
+                <div class="col-span-2 sm:col-span-1 p-3 bg-slate-950 rounded-xl border border-slate-850">
+                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Fokus</p>
+                    <p class="text-sm font-bold text-white mt-1">Otomatisasi, Keamanan & Kontrol</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Call to Action -->
+    <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+            <div class="space-y-3">
+                <h2 class="text-3xl font-extrabold text-white">Mari Terhubung</h2>
+                <p class="text-slate-400">Tertarik mendiskusikan implementasi solusi teknik ini di properti atau gedung Anda? Hubungi saya untuk bertukar pikiran!</p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold transition-all shadow-md shadow-emerald-500/10 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi via WhatsApp
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-bold transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-linkedin text-lg"></i> Kunjungi LinkedIn Saya
+                </a>
+            </div>
+
+            <div class="pt-6">
+                <button onclick="copyPortfolioLink()" class="px-4 py-2 text-xs rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+                    <span id="btn-copy-text"><i class="fa-solid fa-link mr-1.5"></i> Salin Tautan Website Portofolio Ini</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-slate-900 text-center text-xs text-slate-500 bg-slate-950">
+        <p>© 2026 Bambang S. All Rights Reserved. Designed for Building Automation Excellence.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('block');
+            });
+            // Show target
+            const target = document.getElementById(tabId);
+            target.classList.remove('hidden');
+            target.classList.add('block');
+
+            // Reset buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
+                btn.classList.add('bg-slate-800', 'text-slate-300', 'hover:text-white', 'font-semibold');
+            });
+            // Highlight active button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('bg-emerald-500', 'text-slate-950', 'font-bold');
+            activeBtn.classList.remove('bg-slate-800', 'text-slate-300', 'hover:text-white', 'font-semibold');
+        }
+
+        // --- SIMULASI 1: SMART PANTRY ---
+        let pantryTimerVal = 0;
+        let pantryInterval = null;
+        let isPantryOccupied = false;
+
+        function setPantryState(occupied) {
+            isPantryOccupied = occupied;
+            const btnOn = document.getElementById('btn-pantry-on');
+            const btnOff = document.getElementById('btn-pantry-off');
+            const statusTxt = document.getElementById('pantry-status-txt');
+            const timerTxt = document.getElementById('pantry-timer');
+            const visualLight = document.getElementById('visual-light');
+            const visualFan = document.getElementById('visual-fan');
+
+            clearInterval(pantryInterval);
+
+            if (occupied) {
+                // Someone is in the pantry
+                btnOn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950";
+                btnOff.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300";
+                statusTxt.innerText = "Terdeteksi Orang: Lampu & Exhaust AKTIF";
+                statusTxt.className = "text-sm font-semibold text-emerald-400";
+                timerTxt.innerText = "RUNNING";
+                
+                // Visual indicators active
+                visualLight.className = "w-16 h-16 rounded-full bg-emerald-500 border border-emerald-400 flex items-center justify-center transition-all duration-300 glow-active-green";
+                visualLight.querySelector('i').className = "fa-solid fa-lightbulb text-3xl text-white";
+                visualFan.className = "w-16 h-16 rounded-full bg-emerald-500 border border-emerald-400 flex items-center justify-center transition-all duration-300 fan-spin";
+                visualFan.querySelector('i').className = "fa-solid fa-fan text-3xl text-white";
+            } else {
+                // Empty pantry: trigger cooldown/timer
+                btnOn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300";
+                btnOff.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950";
+                statusTxt.innerText = "Kosong: Menghitung Mundur untuk Mematikan Daya";
+                statusTxt.className = "text-sm font-semibold text-amber-400";
+                
+                pantryTimerVal = 5;
+                timerTxt.innerText = pantryTimerVal + "s";
+
+                pantryInterval = setInterval(() => {
+                    pantryTimerVal--;
+                    if (pantryTimerVal <= 0) {
+                        clearInterval(pantryInterval);
+                        timerTxt.innerText = "0s";
+                        statusTxt.innerText = "Sistem Padam (Energi Berhasil Dihemat)";
+                        statusTxt.className = "text-sm font-semibold text-slate-500";
+                        
+                        // Lights Off
+                        visualLight.className = "w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center transition-all duration-300";
+                        visualLight.querySelector('i').className = "fa-solid fa-lightbulb text-3xl text-slate-500";
+                        visualFan.className = "w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center transition-all duration-300";
+                        visualFan.querySelector('i').className = "fa-solid fa-fan text-3xl text-slate-500";
+                    } else {
+                        timerTxt.innerText = pantryTimerVal + "s";
+                    }
+                }, 1000);
+            }
+        }
+
+        // --- SIMULASI 2: PANEL INTEGRASI FIRE & SAFETY ---
+        let isManualMode = true; // Mode default dari start adalah MANUAL
+        let isDrillActive = false;
+        let drillTimeout = null;
+
+        function toggleModeSwitch() {
+            if (isDrillActive) return; // Kunci switch saat pengetesan darurat aktif
+
+            isManualMode = !isManualMode;
+            const rotary = document.getElementById('rotary-switch');
+            const ledAuto = document.getElementById('led-auto');
+            const ledManual = document.getElementById('led-manual');
+            const line1 = document.getElementById('lcd-line1');
+            const line2 = document.getElementById('lcd-line2');
+
+            if (isManualMode) {
+                rotary.style.transform = "rotate(0deg)";
+                ledManual.className = "w-5 h-5 rounded-full bg-emerald-500 border border-emerald-300 mt-2 transition-all glow-active-green";
+                ledAuto.className = "w-5 h-5 rounded-full bg-emerald-950 border border-emerald-900 mt-2 transition-all";
+                line1.innerText = "* MANUAL MODE *";
+                line2.innerText = "READY ON SENSORS";
+            } else {
+                rotary.style.transform = "rotate(90deg)";
+                ledAuto.className = "w-5 h-5 rounded-full bg-emerald-500 border border-emerald-300 mt-2 transition-all glow-active-green";
+                ledManual.className = "w-5 h-5 rounded-full bg-emerald-950 border border-emerald-900 mt-2 transition-all";
+                line1.innerText = "* AUTO MODE *";
+                line2.innerText = "SYSTEM ACTIVE";
+            }
+        }
+
+        function pressDrillButton() {
+            if (isDrillActive) return; // Cegah klik berulang saat simulasi jalan
+
+            const drillLight = document.getElementById('drill-indicator-light');
+            const line1 = document.getElementById('lcd-line1');
+            const line2 = document.getElementById('lcd-line2');
+            
+            // Output elements status
+            const statusAlarm = document.getElementById('status-alarm');
+            const ledAlarm = document.getElementById('led-status-alarm');
+            const statusGate = document.getElementById('status-gate');
+            const ledGate = document.getElementById('led-status-gate');
+            const statusLift = document.getElementById('status-lift');
+            const ledLift = document.getElementById('led-status-lift');
+            const statusFaf = document.getElementById('status-faf');
+            const ledFaf = document.getElementById('led-status-faf');
+
+            isDrillActive = true;
+            drillLight.className = "w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse mt-1";
+            
+            // Perbarui layar LCD
+            line1.innerText = "* DRILL TRIGGER *";
+            line2.innerText = "EVACUATION MODE ";
+
+            // Jalankan urutan penyalaan integrasi 
+            // 1. Alarm Berbunyi
+            statusAlarm.innerText = "🚨 AKTIF";
+            statusAlarm.className = "text-xs font-bold text-red-600 animate-pulse";
+            ledAlarm.className = "w-3.5 h-3.5 rounded-full bg-red-500 glow-active-red";
+
+            // 2. Gate Terbuka (Fail-safe)
+            setTimeout(() => {
+                statusGate.innerText = "🔓 TERBUKA";
+                statusGate.className = "text-xs font-bold text-emerald-600";
+                ledGate.className = "w-3.5 h-3.5 rounded-full bg-emerald-500 glow-active-green";
+            }, 1000);
+
+            // 3. Lift Kembali ke Ground Floor (Lantai 1)
+            setTimeout(() => {
+                statusLift.innerText = "🛗 HOMING GF";
+                statusLift.className = "text-xs font-bold text-amber-600";
+                ledLift.className = "w-3.5 h-3.5 rounded-full bg-amber-500";
+            }, 2000);
+
+            // 4. Fresh Air Fan Aktif (Sirkulasi udara)
+            setTimeout(() => {
+                statusFaf.innerText = "🌀 BERPUTAR";
+                statusFaf.className = "text-xs font-bold text-emerald-600";
+                ledFaf.className = "w-3.5 h-3.5 rounded-full bg-emerald-500 glow-active-green";
+            }, 3000);
+
+            // Reset Simulasi Otomatis setelah 10 Detik
+            drillTimeout = setTimeout(() => {
+                isDrillActive = false;
+                drillLight.className = "w-1.5 h-1.5 rounded-full bg-slate-400 mt-1";
+                
+                // Kembalikan ke normal
+                statusAlarm.innerText = "STANDBY";
+                statusAlarm.className = "text-xs font-bold text-slate-700";
+                ledAlarm.className = "w-3.5 h-3.5 rounded-full bg-slate-400";
+
+                statusGate.innerText = "TERKUNCI";
+                statusGate.className = "text-xs font-bold text-slate-700";
+                ledGate.className = "w-3.5 h-3.5 rounded-full bg-slate-400";
+
+                statusLift.innerText = "NORMAL RUN";
+                statusLift.className = "text-xs font-bold text-slate-700";
+                ledLift.className = "w-3.5 h-3.5 rounded-full bg-slate-400";
+
+                statusFaf.innerText = "MATI";
+                statusFaf.className = "text-xs font-bold text-slate-700";
+                ledFaf.className = "w-3.5 h-3.5 rounded-full bg-slate-400";
+
+                // Refresh LCD sesuai mode asal
+                toggleModeSwitch(); 
+                toggleModeSwitch();
+            }, 10000);
+        }
+
+        // --- SIMULASI 3: INTERFACE AHU ---
+        let ahuStates = { 1: false, 2: false, 3: false };
+        const floorPowers = { 1: 15, 2: 18, 3: 22 }; // Beban daya per AHU lantai dlm kW
+
+        function toggleFloorAhu(floor) {
+            ahuStates[floor] = !ahuStates[floor];
+            updateAhuUi();
+        }
+
+        function toggleAllAhu(state) {
+            ahuStates = { 1: state, 2: state, 3: state };
+            updateAhuUi();
+        }
+
+        function updateAhuUi() {
+            let totalPower = 0;
+
+            for (let floor = 1; floor <= 3; floor++) {
+                const btn = document.getElementById('btn-ahu-' + floor);
+                const circle = document.getElementById('toggle-circle-' + floor);
+                const tempText = document.getElementById('ahu-temp-' + floor);
+                
+                if (ahuStates[floor]) {
+                    // AHU ON
+                    btn.className = "w-14 h-7 rounded-full bg-emerald-500 p-1 transition-all duration-300 relative";
+                    circle.style.transform = "translateX(28px)";
+                    circle.className = "w-5 h-5 rounded-full bg-white absolute left-1 top-1 transition-all";
+                    tempText.innerText = "Temp: 21°C (Stabil)";
+                    tempText.className = "text-xs font-mono text-emerald-400 font-semibold";
+                    totalPower += floorPowers[floor];
+                } else {
+                    // AHU OFF
+                    btn.className = "w-14 h-7 rounded-full bg-slate-800 p-1 transition-all duration-300 relative";
+                    circle.style.transform = "translateX(0px)";
+                    circle.className = "w-5 h-5 rounded-full bg-slate-400 absolute left-1 top-1 transition-all";
+                    tempText.innerText = "Temp: --";
+                    tempText.className = "text-xs font-mono text-slate-500";
+                }
+            }
+
+            document.getElementById('ahu-total-load').innerText = totalPower + " kW";
+        }
+
+        // --- SIMULASI 4: SECURITY CORRIDOR SENSOR ---
+        let currentSecurityHour = 22; // Jam malam default
+        let isSecurityArmed = true;   // Di atas 21.00 armed
+        let securityIntrusionActive = false;
+        let securityResetTimeout = null;
+
+        function updateSecurityTime(hourVal) {
+            currentSecurityHour = parseInt(hourVal);
+            const clockText = document.getElementById('security-clock');
+            const armedBadge = document.getElementById('security-armed-badge');
+            
+            // Format jam tampilan
+            let formattedHour = currentSecurityHour < 10 ? '0' + currentSecurityHour : currentSecurityHour;
+            clockText.innerText = formattedHour + ':00';
+
+            // Logika Timer: Aktif jika jam >= 21 ATAU jam < 5
+            if (currentSecurityHour >= 21 || currentSecurityHour < 5) {
+                isSecurityArmed = true;
+                armedBadge.innerText = 'ARMED (AKTIF)';
+                armedBadge.className = 'px-3 py-1 rounded text-xs font-extrabold bg-emerald-500/20 text-emerald-400 glow-active-green';
+            } else {
+                isSecurityArmed = false;
+                armedBadge.innerText = 'DISARMED (MATI)';
+                armedBadge.className = 'px-3 py-1 rounded text-xs font-extrabold bg-slate-800 text-slate-500';
+                resetSecurityAlarm(); // Reset alarm otomatis jika ditiadakan pada jam siang
+            }
+        }
+
+        function triggerSecurityMotion() {
+            if (securityIntrusionActive) return;
+
+            const iconFrame = document.getElementById('security-screen-icon');
+            const statusMsg = document.getElementById('security-status-msg');
+            const overlay = document.getElementById('intrusion-bg-overlay');
+
+            if (!isSecurityArmed) {
+                // Jam Kerja Normal - Abaikan
+                statusMsg.innerText = `Gerakan Terdeteksi di Jam Kerja (${currentSecurityHour}:00). Tenant Masih Aktif. Sinyal Diabaikan.`;
+                statusMsg.className = "text-sm font-semibold text-amber-400";
+                
+                iconFrame.className = "w-24 h-24 rounded-full bg-amber-950/20 border-2 border-amber-500 flex items-center justify-center text-amber-400 mb-6 transition-all duration-300";
+                iconFrame.querySelector('i').className = "fa-solid fa-person-walking text-4xl";
+                
+                setTimeout(() => {
+                    statusMsg.innerText = "Kondisi Aman - Tidak Ada Gerakan";
+                    statusMsg.className = "text-sm font-semibold text-emerald-400";
+                    iconFrame.className = "w-24 h-24 rounded-full bg-slate-950 border-2 border-slate-800 flex items-center justify-center text-slate-400 mb-6 transition-all duration-300";
+                    iconFrame.querySelector('i').className = "fa-solid fa-shield-halved text-4xl";
+                }, 4000);
+                return;
+            }
+
+            // Jam Malam - INTRUSION ALARM ACTIVE
+            securityIntrusionActive = true;
+            statusMsg.innerText = `🚨 ADANYA PENYUSUP! Gerakan terdeteksi di Koridor Lantai 2 pada pukul ${currentSecurityHour}:00!`;
+            statusMsg.className = "text-sm font-bold text-red-500 animate-pulse";
+            
+            iconFrame.className = "w-24 h-24 rounded-full bg-red-500/10 border-2 border-red-500 flex items-center justify-center text-red-500 mb-6 transition-all duration-300 glow-active-red";
+            iconFrame.querySelector('i').className = "fa-solid fa-triangle-exclamation text-4xl";
+            
+            overlay.className = "absolute inset-0 bg-red-500/15 transition-all duration-300 pointer-events-none";
+
+            // Reset otomatis alarm setelah 7 detik
+            securityResetTimeout = setTimeout(() => {
+                resetSecurityAlarm();
+            }, 7000);
+        }
+
+        function resetSecurityAlarm() {
+            clearTimeout(securityResetTimeout);
+            securityIntrusionActive = false;
+            
+            const iconFrame = document.getElementById('security-screen-icon');
+            const statusMsg = document.getElementById('security-status-msg');
+            const overlay = document.getElementById('intrusion-bg-overlay');
+
+            statusMsg.innerText = "Kondisi Aman - Tidak Ada Gerakan";
+            statusMsg.className = "text-sm font-semibold text-emerald-400";
+            
+            iconFrame.className = "w-24 h-24 rounded-full bg-slate-950 border-2 border-slate-800 flex items-center justify-center text-slate-400 mb-6 transition-all duration-300";
+            iconFrame.querySelector('i').className = "fa-solid fa-shield-halved text-4xl";
+            
+            overlay.className = "absolute inset-0 bg-red-500/0 transition-all duration-300 pointer-events-none";
+        }
+
+        // Salin Tautan / Clipboard (Using document.execCommand fallback)
+        function copyPortfolioLink() {
+            const btnText = document.getElementById('btn-copy-text');
+            const dummy = document.createElement('input');
+            const text = window.location.href;
+            
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            btnText.innerHTML = '<i class="fa-solid fa-check mr-1.5 text-emerald-400"></i> Berhasil Disalin!';
+            setTimeout(() => {
+                btnText.innerHTML = '<i class="fa-solid fa-link mr-1.5"></i> Salin Tautan Website Portofolio Ini';
+            }, 3000);
+        }
+
+        // Initialize default states on load
+        window.onload = function() {
+            setPantryState(false);
+            updateAhuUi();
+            updateSecurityTime(22); // Mulai pada jam 10 malam
+        };
+    </script>
+</body>
+</html>
